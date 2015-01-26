@@ -18,4 +18,4 @@ You can use any technology you like, and it is down to you whether you use a com
 
 ## Submitting your challenge
 
-To start the challenge, fork this repository. Once you have finished, make sure you have added [Code Climate](https://codeclimate.com/) stats to your repository and ideally add [Hound](https://houndci.com/) then submit a pull request. See if you can resolve as many [style-guide](https://github.com/thoughtbot/guides) violations picked up by Hound as possible and your Code Climate score is above 3 and then one of the coaches will review your code. Good luck!
+To start the challenge, fork this repository. Once you have finished, make sure you have added [Code Climate](https://codeclimate.com/) stats to your repository then submit a pull request. See if you can resolve as many [style-guide](https://github.com/thoughtbot/guides) violations picked up by [Hound](https://houndci.com) as possible and your Code Climate score is above 3 and then one of the coaches will review your code. Good luck!
