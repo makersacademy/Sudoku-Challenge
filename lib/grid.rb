@@ -1,6 +1,11 @@
 class Grid
 
-	
+	BoxOfIndex = [
+      0,0,0,1,1,1,2,2,2,0,0,0,1,1,1,2,2,2,0,0,0,1,1,1,2,2,2,
+      3,3,3,4,4,4,5,5,5,3,3,3,4,4,4,5,5,5,3,3,3,4,4,4,5,5,5,
+      6,6,6,7,7,7,8,8,8,6,6,6,7,7,7,8,8,8,6,6,6,7,7,7,8,8,8
+    ].each
+
 	attr_accessor :cells, :rows, :columns, :boxes
 
 	def initialize(puzzle)
@@ -18,10 +23,7 @@ class Grid
 	def create_boxes
 		@boxes = []
     9.times { @boxes << Array.new}
-    triplets_array = @cells.each_slice(3).to_a
-    boxes_enum = [0,1,2,0,1,2,0,1,2,3,4,5,3,4,5,3,4,5,6,7,8,6,7,8,6,7,8].each
-    triplets_array.each{|segment| @boxes[boxes_enum.next].concat([segment])}
-    @boxes.each{|e| e.flatten!}
+    cells.each{|cell| @boxes[BoxOfIndex.next].concat([cell])}
 	end
 
 
