@@ -8,7 +8,7 @@ class Cell
 	end
 
 	def solved?
-		@value != 0
+		@value > 0
 	end
 
 end
