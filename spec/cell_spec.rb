@@ -16,10 +16,6 @@ describe Cell do
     expect(cell.solved?).to eq(true)
   end
 
-  it 'should know what row it resides in' do
-    
-  end
-
 
 
 

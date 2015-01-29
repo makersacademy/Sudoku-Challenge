@@ -1,11 +1,12 @@
 require './lib/grid'
+require './lib/cell'
 
 describe Grid do
 
-	let(:grid) {Grid.new('005000000009000000000000000000000000000000000000000000000000000000000000000000000')}
+	let(:grid) {Grid.new('005000009009000000000000000000000000000000000000000000000000000000000000000000000')}
 
 	context "initialization" do
-		
+
 		it "should contain 81 values" do
 			expect(grid.cells.length).to eq(81)
 		end
@@ -20,17 +21,29 @@ describe Grid do
 
 		it "should be able to create rows" do
 			grid.create_rows
-			expect(grid.rows[0].length).to eq(9)
+			expect(grid.rows.length).to eq(9)
+		end
+
+		it "of rows should be able reference a value" do
+			expect(grid.rows[0][2].value).to eq(5)
 		end
 
 		it "should be able to create columns" do
-			grid.create_columns
-			expect(grid.columns[0].length).to eq(9)
+			expect(grid.columns.length).to eq(9)
 		end
 
-		it 'should be able to create boxes' do
-			grid.create_boxes
-			expect(grid.boxes[1].length).to eq(9)
+		it "of columns should be able reference a value" do
+			expect(grid.columns[2][0].value).to eq(5)
+		end
+
+		it "should be able to create boxes with a cell value" do
+			expect(grid.boxes[0][2].value).to eq(5)
+		end
+		# for some reason when calling this method in a second test the iterator stops and it fails
+
+		it "should be able to find neighbours of a cell" do
+			grid.add_neighbours(grid.cells[0])
+			expect(grid.cells[0].neighbours).to eq([0,5,9])
 		end
 	end
 
