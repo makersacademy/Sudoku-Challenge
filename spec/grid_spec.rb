@@ -45,7 +45,7 @@ describe Grid do
 	context "solver" do
 
 		it "should be able to apply neighbours to all cells" do
-			gridtest.apply_neighbours
+			gridtest.update
 			expect(gridtest.cells[0].neighbours).to eq([5, 3, 0, 7, 6, 8, 4, 9])
 		end
 
@@ -55,7 +55,8 @@ describe Grid do
 		end
 
 		it "should be able to solve a sudoku puzzle" do
-			expect(gridtest.solve).to eq('9999999999999')
+			gridtest.solve
+			expect(gridtest.unsolved_cells.count).to eq(0)
 		end
 
 	end

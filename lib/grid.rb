@@ -30,7 +30,7 @@ class Grid
     @cells.each{|cell| @boxes[iterator.next].concat([cell])}
 	end
 
-	def apply_neighbours
+	def update
 		cells.each do |cell| 
 			cell.add_neighbours(self)
 			cell.find_solutions
@@ -42,11 +42,13 @@ class Grid
 	end
 
 	def solve
-		i = @unsolved_cells
-			unless i == 0
-				apply_neighbours
+		update
+		find_unsolved
+			while @unsolved_cells.count > 0 do
+				update
 				find_unsolved
 			end
+		@unsolved_cells.count
 	end
 
 
