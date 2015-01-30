@@ -15,9 +15,19 @@ class Cell
 		@value > 0
 	end
 
+	def add_neighbours(grid)
+		neighbour_arrays = grid.rows.select{|row| row.include?(self)} + grid.columns.select{|col| col.include?(self)} + grid.boxes.select{|box| box.include?(self)}
+		self.neighbours = neighbour_arrays.flatten.map{|nei|nei.value}.uniq
+	end
+
 	def find_solutions
 		if !solved?
-			solutions = CELL_VALUES - neighbours
+			self.solutions = CELL_VALUES - neighbours
+				if solutions.count == 1
+					self.value = solutions.first
+				else
+					self.solutions
+				end
 		end
 	end
 

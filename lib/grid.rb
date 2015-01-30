@@ -6,7 +6,7 @@ class Grid
       6,6,6,7,7,7,8,8,8,6,6,6,7,7,7,8,8,8,6,6,6,7,7,7,8,8,8
     ]
 
-	attr_accessor :cells, :rows, :columns, :boxes
+	attr_accessor :cells, :rows, :columns, :boxes, :unsolved_cells
 
 	def initialize(puzzle)
 		@cells = puzzle.split('').map {|v| Cell.new(v) }
@@ -30,9 +30,14 @@ class Grid
     @cells.each{|cell| @boxes[iterator.next].concat([cell])}
 	end
 
-	def add_neighbours(cell)
-		neighbour_arrays = rows.select{|row| row.include?(cell)} + columns.select{|col| col.include?(cell)} + boxes.select{|box| box.include?(cell)}
-		cell.neighbours = neighbour_arrays.flatten.map{|nei|nei.value}.uniq
+	def apply_neighbours
+		cells.each do |cell| 
+			cell.add_neighbours(self)
+		end
+	end
+
+	def find_unsolved
+		@unsolved_cells = self.cells.select{|cell| cell.value == 0}
 	end
 
 end

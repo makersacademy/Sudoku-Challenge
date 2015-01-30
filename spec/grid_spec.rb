@@ -1,9 +1,9 @@
 require './lib/grid'
-require './lib/cell'
 
 describe Grid do
 
 	let(:grid) {Grid.new('005000009009000000000000000000000000000000000000000000000000000000000000000000000')}
+	let(:gridtest) {Grid.new('530070000600195000098000060800060003400803001700020006060000280000419005000080079')}
 
 	context "initialization" do
 
@@ -40,11 +40,21 @@ describe Grid do
 			expect(grid.boxes[0][2].value).to eq(5)
 		end
 
-		it "should be able to find neighbours of a cell" do
-			grid.add_neighbours(grid.cells[0])
-			expect(grid.cells[0].neighbours).to eq([0,5,9])
+	end
+
+	context "solver" do
+
+		it "should be able to apply neighbours to all cells" do
+			gridtest.apply_neighbours
+			expect(gridtest.cells[0].neighbours).to eq([5, 3, 0, 7, 6, 8, 4, 9])
+		end
+
+		it "should be able to count number of unsolved cells" do
+			gridtest.find_unsolved
+			expect(gridtest.unsolved_cells.length).to eq(51)
 		end
 
 	end
+
 
 end
