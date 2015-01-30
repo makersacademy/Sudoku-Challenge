@@ -33,11 +33,21 @@ class Grid
 	def apply_neighbours
 		cells.each do |cell| 
 			cell.add_neighbours(self)
+			cell.find_solutions
 		end
 	end
 
 	def find_unsolved
 		@unsolved_cells = self.cells.select{|cell| cell.value == 0}
 	end
+
+	def solve
+		i = @unsolved_cells
+			unless i == 0
+				apply_neighbours
+				find_unsolved
+			end
+	end
+
 
 end

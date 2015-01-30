@@ -25,8 +25,6 @@ class Cell
 			self.solutions = CELL_VALUES - neighbours
 				if solutions.count == 1
 					self.value = solutions.first
-				else
-					self.solutions
 				end
 		end
 	end

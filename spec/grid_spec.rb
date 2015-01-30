@@ -54,6 +54,10 @@ describe Grid do
 			expect(gridtest.unsolved_cells.length).to eq(51)
 		end
 
+		it "should be able to solve a sudoku puzzle" do
+			expect(gridtest.solve).to eq('9999999999999')
+		end
+
 	end
 
 

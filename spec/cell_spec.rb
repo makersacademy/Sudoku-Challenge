@@ -28,7 +28,8 @@ describe Cell do
 
 	it "should be able to find potential solutions for a cell" do
  		cell0.neighbours = [3,4,5,6,7,8,9]
-		expect(cell0.find_solutions).to eq([1,2])
+ 		cell0.find_solutions
+		expect(cell0.solutions).to eq([1,2])
 	end
 
 	it "should be able to apply solution to a cell" do
