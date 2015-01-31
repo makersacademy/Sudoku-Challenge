@@ -4,6 +4,7 @@ describe Grid do
 
 	let(:grid) {Grid.new('005000009009000000000000000000000000000000000000000000000000000000000000000000000')}
 	let(:gridtest) {Grid.new('530070000600195000098000060800060003400803001700020006060000280000419005000080079')}
+	let(:gridfalse) {Grid.new('535070000600195000098000060800060003400803001700020006060000280000419005000080079')}
 
 	context "initialization" do
 
@@ -13,6 +14,10 @@ describe Grid do
 
 		it "should have cell with a value in" do
 			expect(grid.cells[2].value).to eq(5)
+		end
+
+		it "should be able to check for duplicates in rows" do
+			expect(gridfalse.duplicates?).to eq(true)
 		end
 
 	end
@@ -57,6 +62,11 @@ describe Grid do
 		it "should be able to solve a sudoku puzzle" do
 			gridtest.solve
 			expect(gridtest.unsolved_cells.count).to eq(0)
+		end
+
+		it "should be able to return the solution as a string" do
+			gridtest.solve
+			expect(gridtest.string_solution).to eq('534678912672195348198342567859761423426853791713924856961537284287419635345286179')
 		end
 
 	end

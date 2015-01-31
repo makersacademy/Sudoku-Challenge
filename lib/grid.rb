@@ -6,13 +6,17 @@ class Grid
       6,6,6,7,7,7,8,8,8,6,6,6,7,7,7,8,8,8,6,6,6,7,7,7,8,8,8
     ]
 
-	attr_accessor :cells, :rows, :columns, :boxes, :unsolved_cells
+	attr_reader :cells, :rows, :columns, :boxes, :unsolved_cells
 
 	def initialize(puzzle)
 		@cells = puzzle.split('').map {|v| Cell.new(v) }
 		create_rows
 		create_columns
 		create_boxes
+	end
+
+	def duplicates?
+		self.rows[0].uniq! == nil
 	end
 
 	def create_rows
@@ -48,7 +52,11 @@ class Grid
 				update
 				find_unsolved
 			end
-		@unsolved_cells.count
+			string_solution
+	end
+
+	def string_solution
+		cells.map{|cell|cell.value}.join('')
 	end
 
 
