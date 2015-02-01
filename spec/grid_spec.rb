@@ -16,10 +16,6 @@ describe Grid do
 			expect(grid.cells[2].value).to eq(5)
 		end
 
-		it "should be able to check for duplicates in rows" do
-			expect(gridfalse.duplicates?).to eq(true)
-		end
-
 	end
 
 	context "units" do
