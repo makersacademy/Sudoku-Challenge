@@ -1,0 +1,22 @@
+{
+  "name": "Sudoku-Challenge",
+  "version": "1.0.0",
+  "description": "A Sudoku Solver",
+  "main": "server.js",
+  "scripts": {
+    "test": "grunt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nickbdyer/Sudoku-Challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nickbdyer/Sudoku-Challenge/issues"
+  },
+  "homepage": "https://github.com/nickbdyer/Sudoku-Challenge",
+  "devDependencies": {
+    "jasmine": "^2.1.1"
+  }
+}
