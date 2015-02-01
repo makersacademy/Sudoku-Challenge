@@ -1,11 +1,10 @@
 class Cell
 
   attr_accessor :value, :neighbours, :solutions
-
-  CELL_VALUES = [1,2,3,4,5,6,7,8,9]
+  CELL_VALUES = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
   def initialize(value)
-    raise 'Values must be less than 10!' unless value.length == 1
+    raise "Values must be less than 10!" unless value.length == 1
     @value = value.to_i
     @neighbours = []
     @solutions = []
@@ -16,8 +15,11 @@ class Cell
   end
 
   def add_neighbours(grid)
-    neighbour_arrays = grid.rows.select{|row| row.include?(self)} + grid.columns.select{|col| col.include?(self)} + grid.boxes.select{|box| box.include?(self)}
-    self.neighbours = neighbour_arrays.flatten.map{|nei|nei.value}.uniq
+    neighbour_arrays =  grid.rows.select { |row| row.include?(self) } + 
+                        grid.columns.select { |col| col.include?(self) } +
+                        grid.boxes.select { |box| box.include?(self) }
+
+    self.neighbours = neighbour_arrays.flatten.map { |nei|nei.value }.uniq
   end
 
   def find_solutions
@@ -28,5 +30,4 @@ class Cell
         end
     end
   end
-
 end
