@@ -5,6 +5,16 @@
   </head>
   <body>
     <a href='/'>New Game</a>
-    <p>'0'</p>
+
+    <ul>
+      <% @board_view.each do |row| %>
+        <li> 
+          <% row.each do |square_value| %>
+            <td> <%= square_value %> </td>
+          <%end%>
+        </li>
+      <%end%>
+    </ul>
+
   </body>
 </html>

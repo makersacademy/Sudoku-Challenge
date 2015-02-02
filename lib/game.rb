@@ -1,5 +1,7 @@
+['board','region','square','board_viewer'].each {|file| require_relative file + '.rb'}
+
 class Game
-['board','region','square','board_viewer'].each {|file| require file}
+
   def board
     Board.new
   end
