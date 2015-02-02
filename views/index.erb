@@ -5,6 +5,11 @@
   </head>
   <body>
     <a href='/'>New Game</a>
+    <form>
+      Number of moves:<br>
+      <input type="text" name="number_moves" value="1">
+      <input type="submit" value="Advance">
+      </form>
 
     <ul>
       <% @board_view.each do |row| %>

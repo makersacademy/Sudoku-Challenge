@@ -13,15 +13,17 @@ Then(/^I see a blank board$/) do
 end
 
 Given(/^I have a new game$/) do
-  pending # express the regexp above with the code you wish you had
+  step('I visit the homepage')
+  step('I follow "New Game"')
 end
 
 When(/^I select a number of moves to populate$/) do
-  pending # express the regexp above with the code you wish you had
+  fill_in('number_moves', :with => '1')
+  click_button('Advance')
 end
 
 Then(/^I see a partly completed board$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page).not_to have_content('0')
 end
 
 Given(/^I have a partly completed board$/) do

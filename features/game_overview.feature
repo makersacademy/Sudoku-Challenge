@@ -13,6 +13,11 @@ Feature: See computer solution
     When I select a number of moves to populate
     Then I see a partly completed board
 
+  Scenario: Complete board
+    Given I have a new game
+    When I get the computer to populate all the cells
+    Then I see a completed board
+
   Scenario: Computer completes the board
     Given I have a partly completed board
     When I select computer completes board
