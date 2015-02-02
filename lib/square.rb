@@ -1,6 +1,6 @@
 class Square
 
-  def number
-  end
+  attr_accessor :number
+
 
 end

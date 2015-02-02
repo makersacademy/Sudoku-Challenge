@@ -10,7 +10,7 @@ Feature: See computer solution
 
   Scenario: Complete single square game
     Given I have a single square game
-    When I get the computer to populate a square
+    When I get the computer to make a move
     Then I see a completed board
 
   Scenario: Populate the board

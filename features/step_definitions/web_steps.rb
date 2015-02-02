@@ -16,7 +16,7 @@ Given(/^I have a single square game$/) do
   step('I follow "New Game"')
 end
 
-When(/^I get the computer to populate a square$/) do
+When(/^I get the computer to make a move$/) do
   fill_in('number_moves', :with => '1')
   click_button('Advance')
 end

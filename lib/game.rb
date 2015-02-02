@@ -2,13 +2,19 @@
 
 class Game
 
+
+
   def board
-    Board.new
+    @board = Board.new
   end
 
   def show_board
     viewer = BoardViewer.new
-    viewer.show(Board.new)
+    viewer.show(@board)
+  end
+
+  def make_a_move
+    Board.new.regions.first.squares.first.number = 1
   end
 
 end
