@@ -1,11 +1,10 @@
 require 'sinatra/base'
-
-
+require_relative 'square.rb'
 
 
 class Sudoku < Sinatra::Base
   set :views, Proc.new { File.join(root, "..", "views") }
-  
+
   get '/' do
     'Hello Sudoku!'
     erb :index
