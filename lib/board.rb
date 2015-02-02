@@ -1,11 +1,28 @@
+['board','region','square','board_viewer'].each {|file| require_relative file + '.rb'}
 class Board
 
+  #TODO refactor
+  def initialize(size = 1)
+    @regions = []
+    @size = size
+    @number_elements = size**2
+
+    (1..@number_elements).each do |box|
+      box = Region.new
+      box.type = :box
+      (1..@number_elements).each do |square|
+        box.add(square)
+      end
+      add(box)
+    end
+  end
+
   def add(region)
-    @region = region
+    @regions << region
   end
 
   def regions
-    [@region]
+    @regions
   end
 
 

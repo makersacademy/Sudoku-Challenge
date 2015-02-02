@@ -4,6 +4,10 @@ class Region
     :box
   end
 
+  def type=(type)
+
+  end
+
   def add(square)
     @square = square
   end
