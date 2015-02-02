@@ -10,4 +10,9 @@ class Square
     @number
   end
 
+  def played?
+    !@number.nil?
+  end
+
+
 end

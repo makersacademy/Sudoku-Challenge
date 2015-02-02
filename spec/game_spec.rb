@@ -12,4 +12,9 @@ describe Game do
     expect(game.show_board).to eq([[0]])
   end
 
+  it 'knows when the game is complete' do
+    game.make_a_move
+    expect(game.finished?).to be(true)
+  end
+
 end

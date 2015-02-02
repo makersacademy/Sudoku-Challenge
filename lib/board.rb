@@ -25,5 +25,9 @@ class Board
     @regions
   end
 
+  def unplayed_squares_count
+    @regions.map {|region| region.squares}.flatten.select{|square| !square.played?}.count
+  end
+
 
 end

@@ -21,4 +21,8 @@ class Game
     square.number = 1
   end
 
+  def finished?
+    board.unplayed_squares_count == 0
+  end
+
 end
