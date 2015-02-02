@@ -8,13 +8,18 @@ Feature: See computer solution
     When I follow "New Game"
     Then I see a blank board
 
+  Scenario: Complete single square game
+    Given I have a single square game
+    When I get the computer to populate a square
+    Then I see a completed board
+
   Scenario: Populate the board
     Given I have a new game
     When I select a number of moves to populate
     Then I see a partly completed board
 
   Scenario: Complete board
-    Given I have a new game
+    Given I have a new game 
     When I get the computer to populate all the cells
     Then I see a completed board
 
