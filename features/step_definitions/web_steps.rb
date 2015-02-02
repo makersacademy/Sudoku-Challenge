@@ -9,7 +9,7 @@ end
 
 
 Then(/^I see a blank board$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_content('0')
 end
 
 Given(/^I have a new game$/) do

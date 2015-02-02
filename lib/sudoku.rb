@@ -1,5 +1,5 @@
 require 'sinatra/base'
-require_relative 'square.rb'
+require_relative 'game.rb'
 
 
 class Sudoku < Sinatra::Base
@@ -7,6 +7,7 @@ class Sudoku < Sinatra::Base
 
   get '/' do
     'Hello Sudoku!'
+    @game = Game.new
     erb :index
   end
 
