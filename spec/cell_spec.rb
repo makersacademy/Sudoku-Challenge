@@ -35,5 +35,4 @@ describe Cell do
     cell0.find_solutions
     expect(cell0.value).to eq(1)
   end
-
 end

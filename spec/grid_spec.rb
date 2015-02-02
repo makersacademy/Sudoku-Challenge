@@ -61,8 +61,5 @@ describe Grid do
     it "should be able to return the solution as a string" do
       expect(gridtest.solve).to eq('534678912672195348198342567859761423426853791713924856961537284287419635345286179')
     end
-
   end
-
-
 end

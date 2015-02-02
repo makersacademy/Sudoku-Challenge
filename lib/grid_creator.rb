@@ -20,5 +20,4 @@ module GridCreator
     9.times { @boxes << Array.new}
     @cells.each{|cell| @boxes[iterator.next].concat([cell])}
   end
-
 end
