@@ -6,6 +6,10 @@ When(/^I follow "(.*?)"$/) do |link|
   click_link(link)
 end
 
+Then(/^I see a "(.*?)" message$/) do |message|
+  expect(page).to have_content(message)
+end
+
 
 Then(/^I see a blank board$/) do
   expect(page).to have_content('0')
