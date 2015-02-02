@@ -37,3 +37,15 @@ end
 Then(/^I see a completed board$/) do
   expect(page).not_to have_content('0')
 end
+
+Given(/^I have a new game$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+When(/^I select a number of moves to populate$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+When(/^I get the computer to populate all the cells$/) do
+  pending # express the regexp above with the code you wish you had
+end

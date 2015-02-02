@@ -11,7 +11,7 @@ class Board
       box = Region.new
       box.type = :box
       (1..@number_elements).each do |square|
-        box.add(square)
+        box.add(Square.new)
       end
       add(box)
     end

@@ -2,10 +2,12 @@
 
 class Game
 
-
+  def initialize
+    @board = Board.new
+  end
 
   def board
-    @board = Board.new
+    @board
   end
 
   def show_board
@@ -14,7 +16,9 @@ class Game
   end
 
   def make_a_move
-    Board.new.regions.first.squares.first.number = 1
+    region = @board.regions.first
+    square = region.squares.first
+    square.number = 1
   end
 
 end

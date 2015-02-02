@@ -15,7 +15,6 @@ class Sudoku < Sinatra::Base
 
   post '/advance' do
     number_moves = params[:number_moves].to_i
-    puts number_moves
     number_moves.times { GAME.make_a_move }
     redirect '/'
   end

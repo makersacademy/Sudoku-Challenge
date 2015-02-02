@@ -1,5 +1,9 @@
 class Region
 
+  def initialize
+    @squares = []
+  end
+
   def type
     :box
   end
@@ -9,10 +13,10 @@ class Region
   end
 
   def add(square)
-    @square = square
+    @squares << square
   end
 
   def squares
-    [@square]
+    @squares
   end
 end
