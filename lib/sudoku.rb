@@ -10,6 +10,7 @@ class Sudoku < Sinatra::Base
   get '/' do
     'Hello Sudoku!'
     @board_view = GAME.show_board
+    @finished = GAME.finished?
     erb :index
   end
 
