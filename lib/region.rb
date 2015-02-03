@@ -19,4 +19,10 @@ class Region
   def squares
     @squares
   end
+
+  def contains?(square)
+    @squares.include?(square)
+    true
+  end
+
 end
