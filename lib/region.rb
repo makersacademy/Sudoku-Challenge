@@ -28,4 +28,10 @@ class Region
     max_number = @squares.count 
     @squares.count{|square| square.number > max_number} > 0
   end
+
+  #TODO may be inefficient for large regions
+  def number_duplicated?
+    numbers = @squares.map{|square| square.number}
+    numbers.detect {|number| numbers.count(number) > 1} ? true : false
+  end
 end

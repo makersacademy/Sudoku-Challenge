@@ -25,18 +25,47 @@ describe Region do
   end
 
   context 'legal moves' do
+
+    let(:square1) { double :square, number: 1 }
+    let(:square2) { double :square, number: 2 }
+    let(:square3) { double :square, number: 3 }
     
-    it 'knows if a number is too big' do
+    it 'knows if a number is too big for 1 element region' do
       region.add square
       expect(square).to receive(:number).and_return(2)
       expect(region.number_too_big?).to be true
     end
 
-    it 'knows if a number is not too big' do
+    it 'knows if a number is not too big for 1 element region' do
       region.add square
       expect(square).to receive(:number).and_return(1)
       expect(region.number_too_big?).to be false
     end
+
+    it 'knows if a number is too big for 4 element region' do
+      [square, square1, square2, square3].each {|square| region.add(square)}
+      expect(square).to receive(:number).and_return(5)
+      expect(region.number_too_big?).to be true
+    end
+
+    it 'knows if a number is not too big for 4 element region' do
+      [square, square1, square2, square3].each {|square| region.add(square)}
+      expect(square).to receive(:number).and_return(4)
+      expect(region.number_too_big?).to be false
+    end
+
+    it 'knows if a number is not duplicated for 4 element region' do
+      [square, square1, square2, square3].each {|square| region.add(square)}
+      expect(square).to receive(:number).and_return(4)
+      expect(region.number_duplicated?).to be false
+    end
+
+    it 'knows if a number is duplicated for 4 element region' do
+      [square, square1, square2, square3].each {|square| region.add(square)}
+      expect(square).to receive(:number).and_return(3)
+      expect(region.number_duplicated?).to be true
+    end
+
 
 
 

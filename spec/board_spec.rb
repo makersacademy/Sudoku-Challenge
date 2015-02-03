@@ -25,15 +25,15 @@ describe Board do
 
   context 'game play' do
     it 'knows there is one square to play in a size 1*1 board' do
-      # expect(region).to receive(:type).and_return(:box)
-
-      # expect(region).to receive(:squares).and_return([(double :square, :played? => false)])
-      # expect(square).to receive(:unplayed?).and_return(false)
-      puts board
-      puts board.regions
-      puts board.regions.count
       expect(board.unplayed_squares_count).to eq(1)
     end
+
+    #TODO consider if redundant
+    it 'knows there are 16 squares to play in a size 4*4 board' do
+      board = Board.new(2)
+      expect(board.unplayed_squares_count).to eq(16)
+    end
+
   end
 
 end
