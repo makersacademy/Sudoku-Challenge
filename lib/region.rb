@@ -22,7 +22,10 @@ class Region
 
   def contains?(square)
     @squares.include?(square)
-    true
   end
 
+  def number_too_big?
+    max_number = @squares.count 
+    @squares.count{|square| square.number > max_number} > 0
+  end
 end

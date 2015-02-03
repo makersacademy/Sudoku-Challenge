@@ -24,5 +24,24 @@ describe Region do
     expect(region.contains?(square)).to be false
   end
 
+  context 'legal moves' do
+    
+    it 'knows if a number is too big' do
+      region.add square
+      expect(square).to receive(:number).and_return(2)
+      expect(region.number_too_big?).to be true
+    end
+
+    it 'knows if a number is not too big' do
+      region.add square
+      expect(square).to receive(:number).and_return(1)
+      expect(region.number_too_big?).to be false
+    end
+
+
+
+
+  end
+
 
 end
