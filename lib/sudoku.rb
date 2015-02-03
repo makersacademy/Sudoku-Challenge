@@ -8,17 +8,18 @@ class Sudoku < Sinatra::Base
    GAME = Game.new
 
   get '/' do
-    'Hello Sudoku!'
+    number_moves = params[:number_moves].to_i
+    number_moves.times { GAME.make_a_move } 
     @board_view = GAME.show_board
     @finished = GAME.finished?
     erb :index
   end
 
-  post '/advance' do
-    number_moves = params[:number_moves].to_i
-    number_moves.times { GAME.make_a_move }
-    redirect '/'
-  end
+  # post '/advance' do
+  #   number_moves = params[:number_moves].to_i
+  #   number_moves.times { GAME.make_a_move }
+  #   redirect '/'
+  # end
 
 
   # start the server if ruby file executed directly
