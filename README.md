@@ -1,5 +1,7 @@
 # Sudoku Challenge
 
+[![Code
+Climate](https://codeclimate.com/github/nickbdyer/Sudoku-Challenge/badges/gpa.svg)](https://codeclimate.com/github/nickbdyer/Sudoku-Challenge)
 
 ### The Brief
 
