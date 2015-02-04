@@ -4,7 +4,7 @@ var homepageStepsWrapper = function () {
 
   this.Given(/^I am on the homepage$/, function (callback) {
     this.visit('http://localhost:3000/', callback);
-    callback.pending();
+    callback();
   });
 
   this.When(/^I fill in the grid$/, function (callback) {
