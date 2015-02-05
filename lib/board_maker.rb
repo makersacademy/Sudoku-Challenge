@@ -1,5 +1,10 @@
 class BoardMaker
 
+  def populate_squares(board)
+    (board.size**4).times {board.squares << Square.new}
+  end
+
+
   def rows(board)
     board.squares.each_slice(board.size**2).to_a
   end

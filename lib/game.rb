@@ -3,7 +3,7 @@
 class Game
 
   def initialize
-    @board = Board.new
+    @board = Board.new.populate
   end
 
   def board
