@@ -8,13 +8,20 @@ describe('Cell', function() {
 
   it ('is empty when created', function() {
     cell = new Cell();
-    expect(cell._empty()).to.be.true;
+    expect(cell.isEmpty()).to.be.true;
   });
 
   it ('can be assigned a value', function() {
     cell = new Cell();
-    cell.value = 8;
+    cell.assignValue(8);
     expect(cell.value).to.equal(8);
   });
+
+  it ('can only be assigned a single digit value', function() {
+    cell = new Cell();
+    expect( function(){ cell.assignValue(10) } ).to.throw('Cell value must be 1-9.');
+    expect(cell.isEmpty()).to.be.true;
+  });
+
 
 });
