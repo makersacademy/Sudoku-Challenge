@@ -1,3 +1,55 @@
+# Sudoku-Challenge
+
+[![Test Coverage](https://codeclimate.com/github/chandley/Sudoku-Challenge/badges/coverage.svg)](https://codeclimate.com/github/chandley/Sudoku-Challenge)
+[![Code Climate](https://codeclimate.com/github/chandley/Sudoku-Challenge/badges/gpa.svg)](https://codeclimate.com/github/chandley/Sudoku-Challenge)
+
+## Summary
+
+Sudoku solver
+
+### Problem
+
+see below
+
+### Languages/Platforms/Tools
+
+| Languages | Technologies  | Testing Frameworks| Misc
+| :-------------------------------------------- |:--------------|:-----------|:----|
+| Ruby      |  Sinatra             | Rspec             |               |
+|           |               |                   |               |
+|           |               |                   |  
+|           |               |
+
+### Solution
+
+Squares belong to generic Region objects which can be rows, columns or boxes. A Board Maker object sets these up. The Board contains regions, and can check for legal moves. Game chooses a legal move in a square to play.
+
+The game currently chooses a legal play in a random square
+
+### Setup
+
+### Tests
+
+cucumber, rspec
+
+### Images
+
+
+
+### To do
+
+* Problems displaying boards larger than size 1
+* Need a sinatra view to setup game properly
+* Game solving algoritm
+* Some unnecessary tests
+* Tests failing with larger boards
+
+### Learning points
+
+* Doubling
+* Object design
+* Abstraction
+
 # Sudoku Challenge
 
 Build a Sudoku checker that can automatically generate and solve any 9 x 9 [Sudoku](http://en.wikipedia.org/wiki/Sudoku) grid such as the one below:

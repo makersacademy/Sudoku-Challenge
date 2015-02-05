@@ -17,8 +17,8 @@ class Game
 
   def make_a_move
     raise 'no available moves' if finished?
-    chosen_square = board.unplayed_squares.sample
-    chosen_square.number = board.available_moves(chosen_square).sample
+    chosen_square = board.unplayed_squares.first
+    chosen_square.number = board.available_moves(chosen_square).first
   end
 
   def finished?
