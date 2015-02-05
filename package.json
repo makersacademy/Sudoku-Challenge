@@ -1,0 +1,22 @@
+{
+  "name": "sudoku-challenge",
+  "version": "1.0.0",
+  "description": "Build a Sudoku checker that can automatically generate and solve any 9 x 9 [Sudoku](http://en.wikipedia.org/wiki/Sudoku) grid such as the one below:",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/jasmine-node/bin/jasmine-node spec/ --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ejbyne/Sudoku-Challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ejbyne/Sudoku-Challenge/issues"
+  },
+  "homepage": "https://github.com/ejbyne/Sudoku-Challenge",
+  "devDependencies": {
+    "jasmine-node": "^1.14.5"
+  }
+}
