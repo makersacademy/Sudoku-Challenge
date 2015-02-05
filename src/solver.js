@@ -17,11 +17,11 @@ function Solver() {}
 
 Solver.prototype.solve = function(board) {
 	var solution = board;
-	for (var row = 0; row < solution.grid.length; row++) {
-		for (var cell = 0; cell < solution.grid[row].length; cell++) {
+	for (var y = 0; y < solution.grid.length; y++) {
+		for (var x = 0; x < solution.grid[y].length; x++) {
 			for (var i = 1; i <= 9; i++) {
-				if (solution.grid[row][cell] === null && solution.grid[row].indexOf(i) === -1) {
-				  solution.grid[row][cell] = i;
+				if (solution.grid[y][x] === null && solution.grid[y].indexOf(i) === -1) {
+				  solution.grid[y][x] = i;
 			 		break;
 			 	}
 			}
