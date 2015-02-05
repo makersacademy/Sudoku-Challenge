@@ -30,9 +30,14 @@ describe BoardMaker do
     expect(maker.regions(medium_board).count).to eq 12
   end
 
-  it 'knows how to populata a size 1 board with regions' do
+  it 'knows how to populata a size 1 board with 3 regions' do
     expect(board).to receive(:add).exactly(3).times
     maker.populate_regions(board)
+  end
+
+  it 'knows how to populata a size 2 board with 12 regions' do
+    expect(medium_board).to receive(:add).exactly(12).times
+    maker.populate_regions(medium_board)
   end
 
 end

@@ -26,17 +26,23 @@ class BoardMaker
     [rows(board), columns(board), boxes(board)].flatten(1)
   end
 
+  def regions_hash(board)
+    {:row => rows(board), :column => columns(board), :box => boxes(board)}
+  end
+
   def populate_regions(board)
-    region_hash = {:row => rows(board), :column => columns(board), :box => boxes(board)}
-    region_hash.each do |type, regions|
-      regions.each do |squares|
-        region = Region.new
-        squares.each {|square| region.add(square)}
-        region.type = type
-        board.add(region)
-      end
+    regions_hash(board).each do |type, regions|
+      regions.each { |squares| populate_region(board, squares, type) }
     end
   end
+
+  def populate_region(board, squares, type)
+    region = Region.new
+    squares.each {|square| region.add(square)}
+    region.type = type
+    board.add(region)
+  end
+
 
 
 
