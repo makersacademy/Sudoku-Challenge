@@ -8,6 +8,7 @@ class Sudoku < Sinatra::Base
    GAME = Game.new
 
   get '/' do
+    GAME = Game.new if GAME.finished? # this needs refactoring!
     number_moves = params[:number_moves].to_i
     number_moves.times { GAME.make_a_move } 
     @board_view = GAME.show_board
