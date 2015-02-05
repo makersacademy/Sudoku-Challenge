@@ -6,6 +6,8 @@ class Board
     @regions = []
     @size = size
     @number_elements = size**2
+    @squares = []
+    @number_elements.times {@squares << Square.new}
 
     (1..@number_elements).each do |box|
       box = Region.new

@@ -1,9 +1,7 @@
 class BoardMaker
 
   def squares(board)
-    squares = []
-    (board.size**4).times { squares << Square.new }
-    squares
+    board.squares
   end
 
   def rows(board)

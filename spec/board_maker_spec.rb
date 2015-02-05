@@ -3,8 +3,8 @@ require 'board_maker'
 describe BoardMaker do
 
   let(:maker) { BoardMaker.new }
-  let(:board) { double :board, :size => 1 }
-  let(:medium_board) { double :board, :size => 2 }
+  let(:board) { double :board, :size => 1, :squares => [:square] }
+  let(:medium_board) { double :board, :size => 2, :squares => Array.new(16, :square) }
 
   it 'makes 1 square for a size 1 board' do
     expect(maker.squares(board).count).to eq 1
