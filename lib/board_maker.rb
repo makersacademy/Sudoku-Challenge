@@ -1,11 +1,7 @@
 class BoardMaker
 
-  def squares(board)
-    board.squares
-  end
-
   def rows(board)
-    squares(board).each_slice(board.size**2).to_a
+    board.squares.each_slice(board.size**2).to_a
   end
 
   def columns(board)
@@ -42,10 +38,5 @@ class BoardMaker
     region.type = type
     board.add(region)
   end
-
-
-
-
-
 
 end
