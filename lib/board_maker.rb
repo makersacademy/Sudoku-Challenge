@@ -18,6 +18,7 @@ class BoardMaker
     boxes
   end
 
+  # TODO this should be a board method
   def regions(board)
     [rows(board), columns(board), boxes(board)].flatten(1)
   end

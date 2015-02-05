@@ -5,11 +5,11 @@ class Region
   end
 
   def type
-    :box
+    @type ||= :box
   end
 
   def type=(type)
-
+    @type = type
   end
 
   def add(square)
