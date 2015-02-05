@@ -29,4 +29,10 @@ describe('Cell', function() {
     expect(cell.isEmpty()).to.be.true;
   });
 
+  it ('can only be assigned an integer value', function() {
+    cell = new Cell();
+    expect( function(){ cell.assignValue(4.2352) } ).to.throw('Cell value must be an integer.');
+    expect(cell.isEmpty()).to.be.true;
+  });
+
 });

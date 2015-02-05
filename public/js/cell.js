@@ -10,6 +10,7 @@
 
   Cell.prototype.assignValue = function(number) {
     if (number >= 10 ) { throw new TypeError ('Cell value must be 1-9.'); }
+    if (number != Math.abs(number)) { throw new TypeError ('Cell value must be positive.'); }
     this.value = number;
   };
 
