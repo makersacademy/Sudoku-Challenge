@@ -23,5 +23,10 @@ describe('Cell', function() {
     expect(cell.isEmpty()).to.be.true;
   });
 
+  it ('can only be assigned a positive value', function() {
+    cell = new Cell();
+    expect( function(){ cell.assignValue(-9) } ).to.throw('Cell value must be positive.');
+    expect(cell.isEmpty()).to.be.true;
+  });
 
 });
