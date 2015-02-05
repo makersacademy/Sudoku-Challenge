@@ -35,12 +35,12 @@ describe Board do
   context 'game play' do
     it 'knows there is one square to play in a size 1*1 board' do
       board = Board.new.populate
-      expect(board.unplayed_squares_count).to eq(1)
+      expect(board.unplayed_squares.count).to eq(1)
     end
 
     it 'knows there are 16 squares to play in a size 4*4 board' do
       board = Board.new(2).populate
-      expect(board.unplayed_squares_count).to eq(16)
+      expect(board.unplayed_squares.count).to eq(16)
     end
 
   end

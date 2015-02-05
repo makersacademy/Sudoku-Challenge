@@ -16,13 +16,12 @@ class Game
   end
 
   def make_a_move
-    region = @board.regions.first
-    square = region.squares.first
-    square.number = 1
+    chosen_square = board.unplayed_squares.sample
+    chosen_square.number = board.available_moves(chosen_square).sample
   end
 
   def finished?
-    board.unplayed_squares_count == 0
+    board.unplayed_squares.count == 0
   end
 
 end

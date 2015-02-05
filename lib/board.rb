@@ -21,10 +21,11 @@ class Board
     @regions << region
   end
 
-  def unplayed_squares_count
+  def unplayed_squares
     boxes = @regions.select {|region| region.type == :box}
-    boxes.map {|region| region.squares}.flatten.select{|square| !square.played?}.count
+    boxes.map {|region| region.squares}.flatten.select{|square| !square.played?}
   end
+
 
   def regions_containing(square)
     @regions.select {|region| region.squares.include?(square)}
