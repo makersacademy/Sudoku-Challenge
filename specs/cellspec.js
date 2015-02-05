@@ -11,4 +11,10 @@ describe('Cell', function() {
     expect(cell.value).to.equal(null);
   });
 
+  it ('can be assigned a value', function() {
+    cell = new Cell();
+    cell.value = 8;
+    expect(cell.value).to.equal(8);
+  });
+
 });
