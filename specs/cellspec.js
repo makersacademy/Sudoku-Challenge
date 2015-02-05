@@ -8,7 +8,7 @@ describe('Cell', function() {
 
   it ('is empty when created', function() {
     cell = new Cell();
-    expect(cell.value).to.equal(null);
+    expect(cell._empty()).to.be.true;
   });
 
   it ('can be assigned a value', function() {
