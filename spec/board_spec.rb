@@ -38,10 +38,20 @@ describe Board do
       expect(board.unplayed_squares_count).to eq(1)
     end
 
-    #TODO consider if redundant
     it 'knows there are 16 squares to play in a size 4*4 board' do
       board = Board.new(2).populate
       expect(board.unplayed_squares_count).to eq(16)
+    end
+
+  end
+
+  context 'legal moves' do
+
+    it 'knows which moves are available for a square' do
+      board = Board.new(2).populate
+      square = board.squares.first
+      expect(board.available_moves(square)).to eq([1,2,3,4])
+
     end
 
   end

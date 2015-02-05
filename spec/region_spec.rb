@@ -29,6 +29,7 @@ describe Region do
     let(:square1) { double :square, number: 1 }
     let(:square2) { double :square, number: 2 }
     let(:square3) { double :square, number: 3 }
+    let(:square4) { double :square, number: nil }
     
     it 'knows if a number is too big for 1 element region' do
       region.add square
@@ -66,7 +67,10 @@ describe Region do
       expect(region.number_duplicated?).to be true
     end
 
-
+    it 'knows which numbers are available to play' do
+      [square1, square2, square3, square4].each {|square| region.add(square)}
+      expect(region.possible_plays).to include (4)
+    end
 
 
 

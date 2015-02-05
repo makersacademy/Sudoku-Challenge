@@ -30,5 +30,10 @@ class Board
     @regions.select {|region| region.squares.include?(square)}
   end
 
+  def available_moves(square)
+     regions_containing(square).map{ |region| region.possible_plays }.inject(:&)
+  end
+
+
 
 end

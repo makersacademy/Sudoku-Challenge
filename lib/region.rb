@@ -34,4 +34,11 @@ class Region
     numbers = @squares.map{|square| square.number}
     numbers.detect {|number| numbers.count(number) > 1} ? true : false
   end
+
+  def possible_plays
+    numbers_played = @squares.map {|square| square.number}
+    all_numbers = (1..@squares.count).to_a
+    all_numbers.reject {|i| numbers_played.include?(i)}
+  end
+
 end
