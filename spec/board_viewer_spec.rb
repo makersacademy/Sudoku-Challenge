@@ -1,3 +1,4 @@
+require 'spec_helper'
 require 'board_viewer'
 
 ['board','region','square'].each {|file| require file}

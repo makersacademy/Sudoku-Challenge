@@ -1,3 +1,4 @@
+require 'spec_helper'
 require 'region'
 
 describe Region do
