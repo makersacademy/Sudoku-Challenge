@@ -41,16 +41,14 @@ Solver.prototype._removeExistingNumbers = function(cell, board, section) {
 };
 
 Solver.prototype._removeArrayIfLastNumber = function(cell, board) {
-	if (board.grid[cell].length === 1) {
+	if (board.grid[cell].length === 1)
 		board.grid[cell] = board.grid[cell][0];
-	}
 };
 
 Solver.prototype._repeatIfAnyCellNotSolved = function(board) {
 	for (var cell in board.grid) {
-		if (Array.isArray(board.grid[cell])) {
+		if (Array.isArray(board.grid[cell]))
 			this.solveBoard(board);
-		}
 	}
 }
 

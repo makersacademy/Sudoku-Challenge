@@ -4,8 +4,8 @@ function Board() {
 
 Board.prototype.LETTERS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
 Board.prototype.NUMBERS = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
-Board.prototype.XBLOCKS = [['1', '2', '3'], ['4', '5', '6'], ['7', '8', '9']];
-Board.prototype.YBLOCKS = [['A', 'B', 'C'], ['D', 'E', 'F'], ['G', 'H', 'I']];
+Board.prototype.LETTER_ARRAYS = [['A', 'B', 'C'], ['D', 'E', 'F'], ['G', 'H', 'I']];
+Board.prototype.NUMBER_ARRAYS = [['1', '2', '3'], ['4', '5', '6'], ['7', '8', '9']];
 
 Board.prototype.createGrid = function() {
 	var _this = this;
@@ -36,20 +36,32 @@ Board.prototype.findColumn = function(coord) {
 			column.push(cell);
 	}
 	return column;
-}
+};
 
 Board.prototype.findBlock = function(coord) {
-	var xBlock;
-	var yBlock;
-	this.XBLOCKS.forEach(function(blockOption) {
-		if (blockOption.indexOf(coord[1]) > -1) { xBlock = blockOption; }
+	var letters = this._findLetterArray(coord);
+	var numbers = this._findNumberArray(coord);
+	return ([letters[0] + numbers[0], letters[0] + numbers[1], letters[0] + numbers[2],
+					 letters[1] + numbers[0], letters[1] + numbers[1], letters[1] + numbers[2],
+					 letters[2] + numbers[0], letters[2] + numbers[1], letters[2] + numbers[2]]);
+};
+
+Board.prototype._findLetterArray = function(coord) {
+	var letterArray;
+	this.LETTER_ARRAYS.forEach(function(array) {
+		if (array.indexOf(coord[0]) > -1)
+			letterArray = array;
 	});
-	this.YBLOCKS.forEach(function(blockOption) {
-		if (blockOption.indexOf(coord[0]) > -1) { yBlock = blockOption; }
+	return letterArray;
+};
+
+Board.prototype._findNumberArray = function(coord) {
+	var numberArray;
+	this.NUMBER_ARRAYS.forEach(function(array) {
+		if (array.indexOf(coord[1]) > -1)
+			numberArray = array;
 	});
-	return ([yBlock[0]+xBlock[0], yBlock[0]+xBlock[1], yBlock[0]+xBlock[2],
-					 yBlock[1]+xBlock[0], yBlock[1]+xBlock[1], yBlock[1]+xBlock[2],
-					 yBlock[2]+xBlock[0], yBlock[2]+xBlock[1], yBlock[2]+xBlock[2]]);
+	return numberArray;
 };
 
 module.exports = Board;
