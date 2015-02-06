@@ -1,3 +1,5 @@
+'use strict';
+
 function Board() {
 	this.grid = {};
 }
@@ -47,21 +49,21 @@ Board.prototype.findBlock = function(coord) {
 };
 
 Board.prototype._findLetterArray = function(coord) {
-	var letterArray;
+	var letters;
 	this.LETTER_ARRAYS.forEach(function(array) {
 		if (array.indexOf(coord[0]) > -1)
-			letterArray = array;
+			letters = array;
 	});
-	return letterArray;
+	return letters;
 };
 
 Board.prototype._findNumberArray = function(coord) {
-	var numberArray;
+	var numbers;
 	this.NUMBER_ARRAYS.forEach(function(array) {
 		if (array.indexOf(coord[1]) > -1)
-			numberArray = array;
+			numbers = array;
 	});
-	return numberArray;
+	return numbers;
 };
 
 module.exports = Board;

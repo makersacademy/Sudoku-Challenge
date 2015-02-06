@@ -1,3 +1,5 @@
+'use strict';
+
 function Solver() {}
 
 Solver.prototype.solveBoard = function(board) {
@@ -14,7 +16,7 @@ Solver.prototype._checkRelevantCells = function(cell, board) {
 	this._checkCellRow(cell, board);
 	this._checkCellColumn(cell, board);
 	this._checkCellBlock(cell, board);
-}
+};
 
 Solver.prototype._checkCellRow = function(cell, board) {
 	var row = board.findRow(cell);
@@ -50,6 +52,6 @@ Solver.prototype._repeatIfAnyCellNotSolved = function(board) {
 		if (Array.isArray(board.grid[cell]))
 			this.solveBoard(board);
 	}
-}
+};
 
 module.exports = Solver;

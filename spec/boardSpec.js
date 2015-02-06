@@ -1,3 +1,5 @@
+'use strict';
+
 var Board = require('../src/board');
 
 describe('Board', function() {
@@ -30,7 +32,7 @@ describe('Board', function() {
 			}
 		});
 
-		it('allows starting numbers to be allocated to the relevant coordinates', function() {
+		it('allows initial numbers to be allocated to the relevant coordinates', function() {
 			board.insertInitialNumber('A1', 1);
 			expect(board.grid.A1).toEqual(1);
 		});
@@ -38,7 +40,7 @@ describe('Board', function() {
 	});
 
 	describe('knowing the location of a cell', function() {
-		
+
 		beforeEach(function() {
 			board.createGrid();
 		});
