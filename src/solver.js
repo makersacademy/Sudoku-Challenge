@@ -1,5 +1,3 @@
-'use strict';
-
 function Solver() {}
 
 Solver.prototype.solveBoard = function(board) {

@@ -1,5 +1,3 @@
-'use strict';
-
 var Board = require('../src/board');
 
 describe('Board', function() {

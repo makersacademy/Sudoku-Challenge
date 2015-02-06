@@ -1,5 +1,3 @@
-'use strict';
-
 var Solver = require('../src/solver');
 var Board = require('../src/board');
 
