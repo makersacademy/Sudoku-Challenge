@@ -30,9 +30,18 @@ describe('Board', function() {
 
 	it('knows which row a cell is in', function() {
 		board.createGrid();
-		expect(board.findRow('A1')).toEqual([board.grid.A1, board.grid.A2, board.grid.A3,
-																				 board.grid.A4, board.grid.A5, board.grid.A6,
-																				 board.grid.A7, board.grid.A8, board.grid.A9]);
-	})
+		expect(board.findRow('A1')).toEqual(['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9']);
+	});
+
+	it('knows which column a cell is in', function() {
+		board.createGrid();
+		expect(board.findColumn('A1')).toEqual(['A1', 'B1', 'C1', 'D1', 'E1', 'F1', 'G1', 'H1', 'I1']);
+	});
+
+	it('knows which block a cell is in', function() {
+		board.createGrid();
+		console.log(board.findBlock('I7'));
+		expect(board.findBlock('A1')).toEqual(['A1', 'A2', 'A3', 'B1', 'B2', 'B3', 'C1', 'C2', 'C3']);
+	});
 
 });
