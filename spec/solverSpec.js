@@ -3,41 +3,44 @@ var Board = require('../src/board');
 
 describe('Solver', function() {
 
-	// var solver = new Solver();
-	// var board = new Board();
-	// var solution;
+	var solver = new Solver();
+	var board = new Board();
+	var initialNumbers = [['A1', 5], ['A2', 3], ['A5', 7],
+												['B1', 6], ['B4', 1], ['B5', 9], ['B6', 5],
+												['C2', 9], ['C3', 8], ['C8', 6],
+												['D1', 8], ['D5', 6], ['D9', 3],
+												['E1', 4], ['E4', 8], ['E6', 3], ['E9', 1],
+												['F1', 7], ['F5', 2], ['F9', 6],
+												['G2', 6], ['G7', 2], ['G8', 8],
+												['H4', 4], ['H5', 1], ['H6', 9], ['H9', 5],
+												['I5', 8], ['I8', 7], ['I9', 9]];
+	
+	beforeEach(function() {
+		board.createGrid();
+		initialNumbers.forEach(function(initialNumber) {
+			board.insertInitialNumber(initialNumber[0], initialNumber[1]);
+		});
+	});
 
-	// beforeEach(function() {
-	// 	board.grid = [
-	// 								 [5, 3, 0, 0, 7, 0, 0, 0, 0],
-	// 								 [6, 0, 0, 1, 9, 5, 0, 0, 0],
-	// 								 [0, 9, 8, 0, 0, 0, 0, 6, 0],
-	// 								 [8, 0, 0, 0, 6, 0, 0, 0, 3],
-	// 								 [4, 0, 0, 8, 0, 3, 0, 0, 1],
-	// 								 [7, 0, 0, 0, 2, 0, 0, 0, 6],
-	// 								 [0, 6, 0, 0, 0, 0, 2, 8, 0],
-	// 								 [0, 0, 0, 4, 1, 9, 0, 0, 5],
-	// 								 [0, 0, 0, 0, 8, 0, 0, 7, 9]
-	// 							 ];
-	// 	solution = solver.solve(board);
-	// })
+	it('can discount any number already existing in a cell\'s row', function() {
+		solver.checkCellRow('A3', board);
+		expect(board.grid.A3).toEqual([1, 2, 4, 6, 8, 9]);
+	});
 
-	// it('will fill in each row with numbers 1 to 9 but no number will be repeated in the same row', function() {
-	// 	solution.grid.forEach(function(row) {
-	// 		expect(row.sort()).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9]);
-	// 	});
-	// });
+	it('can discount any number already existing in a cell\'s column', function() {
+		solver.checkCellColumn('A3', board);
+		expect(board.grid.A3).toEqual([1, 2, 3, 4, 5, 6, 7, 9]);;
+	});
 
-	// it('will fill in each row with numbers 1 to 9 but no number will be repeated in the same column', function() {
-	// 	var solution = solver.solve(board);
-	// 	for (var x = 0; x < 9; x++) {
-	// 		var column = [];
-	// 		for (var y = 0; y < 9; y++) {
-	// 			column.push(solution.grid[y][x]);
-	// 		}
-	// 		// expect(column.sort()).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9]);
-	// 		console.log(column);
-	// 	}
-	// });
+	it('can discount any number already existing in a cell\'s block', function() {
+		solver.checkCellBlock('A3', board);
+		expect(board.grid.A3).toEqual([1, 2, 4, 7]);
+	});
+
+	it('can iterate through all of the cells in the grid and discount any number already existing in each cell\'s row, column or block', function() {
+		solver.solveBoard(board);
+		expect(board.grid.A3).toEqual([1, 2, 4]);
+		console.log(board);
+	});
 
 });

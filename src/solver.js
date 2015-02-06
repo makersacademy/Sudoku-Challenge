@@ -1,36 +1,43 @@
 function Solver() {}
 
-// Solver.prototype.solve = function(board) {
-// 	var solution = board;
-// 	for (var y = 0; y < solution.grid.length; y++) {
-// 		for (var x = 0; x < solution.grid[y].length; x++) {
-// 			for (var i = 1; i <= 9; i++) {
-// 				if (this.isCellEmpty(solution, y, x) &&
-// 						this.isNumberNotInRow(solution, y, i) &&
-// 						this.isNumberNotInColumn(solution, x, i)) {
-// 				  		solution.grid[y][x] = i;
-// 			 				break;
-// 			 	}
-// 			}
-// 		}
-// 	}
-// 	return solution;
-// };
+Solver.prototype.solveBoard = function(board) {
+	for (var cell in board.grid) {
+		if (Array.isArray(board.grid[cell])) {
+			this.checkCellRow(cell, board);
+			this.checkCellColumn(cell, board);
+			this.checkCellBlock(cell, board);
+		}
+	}
+};
 
-// Solver.prototype.isCellEmpty = function(solution, y, x) {
-// 	return (solution.grid[y][x] === null);
-// }
+Solver.prototype.checkCellRow = function(cell, board) {
+	var row = board.findRow(cell);
+	row.forEach(function(coord) {
+		if (board.grid[cell].indexOf(board.grid[coord]) > -1) {
+			var index = board.grid[cell].indexOf(board.grid[coord]);
+			board.grid[cell].splice(index, 1);
+		}
+	});
+};
 
-// Solver.prototype.isNumberNotInRow = function(solution, y, i) {
-// 	return (solution.grid[y].indexOf(i) === -1);
-// }
+Solver.prototype.checkCellColumn = function(cell, board) {
+	var column = board.findColumn(cell);
+	column.forEach(function(coord) {
+		if (board.grid[cell].indexOf(board.grid[coord]) > -1) {
+			var index = board.grid[cell].indexOf(board.grid[coord]);
+			board.grid[cell].splice(index, 1);
+		}
+	});
+};
 
-// Solver.prototype.isNumberNotInColumn = function(solution, x, i) {
-// 	var column = [];
-// 	for (var y = 0; y < 9; y++) {
-// 		column.push(solution.grid[y][x]);
-// 	}
-// 	return (column.indexOf(i) === -1);
-// }
+Solver.prototype.checkCellBlock = function(cell, board) {
+	var block = board.findBlock(cell);
+	block.forEach(function(coord) {
+		if (board.grid[cell].indexOf(board.grid[coord]) > -1) {
+			var index = board.grid[cell].indexOf(board.grid[coord]);
+			board.grid[cell].splice(index, 1);
+		}
+	});
+};
 
 module.exports = Solver;
