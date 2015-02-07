@@ -46,6 +46,15 @@ Board.prototype.findBlock = function(coord) {
 					 letters[2] + numbers[0], letters[2] + numbers[1], letters[2] + numbers[2]]);
 };
 
+Board.prototype.splitGridCoordsIntoRows = function() {
+	var coords = Object.keys(this.grid);
+	var rows = [];
+	while (coords.length > 0) {
+		rows.push(coords.splice(0, 9));
+	}
+	return rows;
+};
+
 Board.prototype._findLetterArray = function(coord) {
 	var letters;
 	this.LETTER_ARRAYS.forEach(function(array) {

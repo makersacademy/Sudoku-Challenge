@@ -35,6 +35,12 @@ describe('Board', function() {
 			expect(board.grid.A1).toEqual(1);
 		});
 
+		it('can split the grid coords into 9 rows of 9', function() {
+			var rows = board.splitGridCoordsIntoRows();
+			expect(rows.length).toEqual(9);
+			console.log(rows);
+		});
+
 	});
 
 	describe('knowing the location of a cell', function() {
