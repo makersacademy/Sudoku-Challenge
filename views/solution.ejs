@@ -6,19 +6,23 @@
 	</head>
 
 	<body>
-		<h1>Sudoku Solver</h1>
-		<h2>Solution:</h2>
-			<table>
-				<% rows.forEach(function(row) { %>
-				  <tr>
-				    <% row.forEach(function(cell) { %>
-				    	<td><%= board.grid[cell] %></td>
-				    <% }); %>
-				 </tr>
-				<% }); %>
-			</table>
-			<br>
-			<input type="submit" value="Start again" action="/" method="get">
+		<section>
+			<h1>Sudoku Solver</h1>
+			<p>Solution:</p>
+				<table>
+					<% rows.forEach(function(row) { %>
+					  <tr>
+					    <% row.forEach(function(cell) { %>
+					    	<td><%= board.grid[cell] %></td>
+					    <% }); %>
+					 </tr>
+					<% }); %>
+				</table>
+				<br>
+				<form action='/' method='get'>
+					<input type="submit" value="Start again">
+				</form>
+			</section>
 	</body>
 
 </html>
