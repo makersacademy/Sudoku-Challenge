@@ -6,7 +6,7 @@ module.exports = function(grunt){
       options: {
       },
       files: {
-        src: ['test/**/*']
+        src: ['test/*.js']
       }
     },
 
@@ -18,12 +18,12 @@ module.exports = function(grunt){
     },
 
     jshint: {
-        src: ['src/']
+        src: ['app/**/*.js']
     },
 
     watch: {
       scripts: {
-        files: ['src/*.js', 'spec/*.js', 'test/*.js', 'public/views/*.ejs'],
+        files: ['app/**/*.js', 'spec/*.js', 'test/*.js', 'app/views/*.ejs'],
         tasks: ['jasmine_node', 'jshint', 'mocha_casperjs']
       }
     }

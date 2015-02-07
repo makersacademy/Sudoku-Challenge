@@ -1,4 +1,4 @@
-var Board = require('../src/board');
+var Board = require('../app/models/board');
 
 describe('Board', function() {
 
@@ -38,7 +38,6 @@ describe('Board', function() {
 		it('can split the grid coords into 9 rows of 9', function() {
 			var rows = board.splitGridCoordsIntoRows();
 			expect(rows.length).toEqual(9);
-			console.log(rows);
 		});
 
 	});

@@ -1,5 +1,5 @@
-var Solver = require('../src/solver');
-var Board = require('../src/board');
+var Solver = require('../app/models/solver');
+var Board = require('../app/models/board');
 
 describe('Solver', function() {
 
