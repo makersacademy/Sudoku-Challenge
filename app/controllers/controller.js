@@ -19,7 +19,6 @@ var controller = function(app) {
 		for (var coord in initialNumbers) {
 			if (board.grid[coord] && initialNumbers[coord] !== '')
 				board.insertInitialNumber(coord, parseInt(initialNumbers[coord]));
-				// catch(error) { response.render('index', {rows: rows, error: error }); }
 		}
 		solver.solveBoard(board);
 		response.render('solution', {rows: rows, board: board});

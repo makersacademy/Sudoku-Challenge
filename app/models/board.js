@@ -17,16 +17,18 @@ Board.prototype.createGrid = function() {
 };
 
 Board.prototype.insertInitialNumber = function(coord, number) {
-	if (number < 1 || number > 9 || Math.floor(number) !== number)
+	if (number < 1 || number > 9 || Math.floor(number) !== number) {
 		throw "Invalid number. Please only insert numbers 1 to 9.";
+	}
 	this.grid[coord] = number;
 };
 
 Board.prototype.findRow = function(coord) {
 	var row = [];
 	for (var cell in this.grid) {
-		if (coord[0] === cell[0])
+		if (coord[0] === cell[0]) {
 			row.push(cell);
+		}
 	}
 	return row;
 };
@@ -34,8 +36,9 @@ Board.prototype.findRow = function(coord) {
 Board.prototype.findColumn = function(coord) {
 	var column = [];
 	for (var cell in this.grid) {
-		if (coord[1] === cell[1])
+		if (coord[1] === cell[1]) {
 			column.push(cell);
+		}
 	}
 	return column;
 };
@@ -60,8 +63,9 @@ Board.prototype.splitGridCoordsIntoRows = function() {
 Board.prototype._findLetterArray = function(coord) {
 	var letters;
 	this.LETTER_ARRAYS.forEach(function(array) {
-		if (array.indexOf(coord[0]) > -1)
+		if (array.indexOf(coord[0]) > -1) {
 			letters = array;
+		}
 	});
 	return letters;
 };
@@ -69,8 +73,9 @@ Board.prototype._findLetterArray = function(coord) {
 Board.prototype._findNumberArray = function(coord) {
 	var numbers;
 	this.NUMBER_ARRAYS.forEach(function(array) {
-		if (array.indexOf(coord[1]) > -1)
+		if (array.indexOf(coord[1]) > -1) {
 			numbers = array;
+		}
 	});
 	return numbers;
 };
