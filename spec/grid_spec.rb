@@ -4,6 +4,7 @@ describe Grid do
 
   let(:grid) {Grid.new('005000009009000000000000000000000000000000000000000000000000000000000000000000000')}
   let(:gridtest) {Grid.new('530070000600195000098000060800060003400803001700020006060000280000419005000080079')}
+
   context "initialization" do
 
     it "should contain 81 values" do
@@ -60,6 +61,13 @@ describe Grid do
 
     it "should be able to return the solution as a string" do
       expect(gridtest.solve).to eq('534678912672195348198342567859761423426853791713924856961537284287419635345286179')
+    end
+  end
+
+  context "generator" do
+
+    it "should generate a string of 81 values" do
+      expect(grid.generate)
     end
   end
 end
