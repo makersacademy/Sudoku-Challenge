@@ -24,11 +24,11 @@ Board.prototype.insertInitialNumber = function(coord, number) {
 };
 
 Board.prototype.findRow = function(coord) {
-	return this._findSelectedCells(0);
+	return this._findSelectedCells(coord, 0);
 };
 
 Board.prototype.findColumn = function(coord) {
-	return this._findSelectedCells(1);
+	return this._findSelectedCells(coord, 1);
 };
 
 Board.prototype.findBlock = function(coord) {
@@ -48,7 +48,7 @@ Board.prototype.splitGridCoordsIntoRows = function() {
 	return rows;
 };
 
-Board.prototype._findSelectedCells = function(characterNumber) {
+Board.prototype._findSelectedCells = function(coord, characterNumber) {
 	var array = [];
 	for (var cell in this.grid) {
 		if (coord[characterNumber] === cell[characterNumber]) {
