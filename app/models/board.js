@@ -17,6 +17,8 @@ Board.prototype.createGrid = function() {
 };
 
 Board.prototype.insertInitialNumber = function(coord, number) {
+	if (number < 1 || number > 9 || Math.floor(number) !== number)
+		throw "Invalid number. Please only insert numbers 1 to 9.";
 	this.grid[coord] = number;
 };
 

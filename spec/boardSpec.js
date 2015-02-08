@@ -35,6 +35,10 @@ describe('Board', function() {
 			expect(board.grid.A1).toEqual(1);
 		});
 
+		it('will only allow the numbers 1 to 9 to be inserted', function() {
+			expect(function() { board.insertInitialNumber('A1', 10) }).toThrow('Invalid number. Please only insert numbers 1 to 9.');
+		});
+
 		it('can split the grid coords into 9 rows of 9', function() {
 			var rows = board.splitGridCoordsIntoRows();
 			expect(rows.length).toEqual(9);
