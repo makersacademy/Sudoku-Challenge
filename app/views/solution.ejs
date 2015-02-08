@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sudoku Solver</title>
+		<link rel="stylesheet" type="text/css" href="/css/stylesheet.css"/>
+	</head>
+
+	<body>
+		<section>
+			<h1>Sudoku Solver</h1>
+			<p>Solution:</p>
+				<table id="solution-table">
+					<% rows.forEach(function(row) { %>
+					  <tr>
+					    <% row.forEach(function(cell) { %>
+					    	<td><%= board.grid[cell] %></td>
+					    <% }); %>
+					 </tr>
+					<% }); %>
+				</table>
+				<br>
+				<form action='/' method='get'>
+					<input type="submit" value="Start again">
+				</form>
+			</section>
+	</body>
+
+</html>
