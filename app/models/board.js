@@ -56,26 +56,25 @@ Board.prototype._findSelectedCells = function(coord, characterNumber) {
 		}
 	}
 	return array;
-}
+};
 
 Board.prototype._findLetterArray = function(coord) {
-	var letters;
-	this.LETTER_ARRAYS.forEach(function(array) {
-		if (array.indexOf(coord[0]) > -1) {
-			letters = array;
-		}
-	});
-	return letters;
+	return this._findSelectedArray(coord, 0, this.LETTER_ARRAYS);
 };
 
 Board.prototype._findNumberArray = function(coord) {
-	var numbers;
-	this.NUMBER_ARRAYS.forEach(function(array) {
-		if (array.indexOf(coord[1]) > -1) {
-			numbers = array;
+	return this._findSelectedArray(coord, 1, this.NUMBER_ARRAYS);
+	
+};
+
+Board.prototype._findSelectedArray = function(coord, characterNumber, arrays) {
+	var array;
+	arrays.forEach(function(arrayOption) {
+		if (arrayOption.indexOf(coord[characterNumber]) > -1) {
+			array = arrayOption;
 		}
 	});
-	return numbers;
+	return array;
 };
 
 module.exports = Board;
