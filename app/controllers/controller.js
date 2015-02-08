@@ -17,8 +17,9 @@ var controller = function(app) {
 	app.post('/solution', function(request, response) {
 		var initialNumbers = request.body;
 		for (var coord in initialNumbers) {
-			if (board.grid[coord] && initialNumbers[coord] !== '')
+			if (board.grid[coord] && initialNumbers[coord] !== '') {
 				board.insertInitialNumber(coord, parseInt(initialNumbers[coord]));
+			}
 		}
 		solver.solveBoard(board);
 		response.render('solution', {rows: rows, board: board});
