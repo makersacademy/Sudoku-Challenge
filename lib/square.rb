@@ -8,6 +8,10 @@ class Square
     @number = number
   end
 
+  def remove_number
+    @number = nil
+  end
+
   def number
     @number
   end

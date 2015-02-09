@@ -13,6 +13,12 @@ describe Game do
     expect(game.show_board).to eq([[0]])
   end
 
+  it 'can make a move' do
+    game2 = Game.new(2)
+    game2.make_a_move
+    expect(game2.finished?).to be(false)
+  end
+
   it 'knows when the game is complete' do
     game.make_a_move
     expect(game.finished?).to be(true)
@@ -30,6 +36,15 @@ describe Game do
     expect(game3.finished?).to be(false)
     81.times { game3.make_a_move }
     expect(game3.finished?).to be(true)
+  end
+
+  context 'choosing a move' do
+    it 'can unmake thelast move' do
+      game.make_a_move
+      game.unmake_last_move
+      expect(game.finished?).to be(false)
+    end
+
   end
 
 end

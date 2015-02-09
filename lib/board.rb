@@ -40,6 +40,12 @@ class Board
     square.number = chosen_number
   end
 
+   def remove_play(square)
+    squares.delete(square)
+    squares.unshift(square)
+    square.remove_number
+  end
+
   def play_order(square)
     squares.index(square)
   end

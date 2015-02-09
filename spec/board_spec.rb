@@ -51,7 +51,7 @@ describe Board do
 
     it 'cant play a square twice' do
       board = Board.new.populate
-      square = square = board.squares.first
+      square = board.squares.first
       board.play(square, 1)
       expect { board.play(square, 1)} .to raise_error(RuntimeError)
     end
@@ -63,6 +63,14 @@ describe Board do
       board.play(square2, 1)
       board.play(square1, 2)
       expect(board.play_order(square2)<board.play_order(square1)).to be true
+    end
+
+    it 'can remove play for a square' do
+      board = Board.new.populate
+      square = board.squares.first
+      board.play(square, 1)
+      board.remove_play(square)
+      expect(board.unplayed_squares.count).to eq(1)
     end
 
   end
