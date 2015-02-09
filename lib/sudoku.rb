@@ -5,8 +5,6 @@ require_relative 'game.rb'
 class Sudoku < Sinatra::Base
   set :views, Proc.new { File.join(root, "..", "views") }
 
-   GAME = Game.new
-
   get '/play' do
     # GAME = Game.new if GAME.finished? # this needs refactoring!
     number_moves = params[:number_moves].to_i
