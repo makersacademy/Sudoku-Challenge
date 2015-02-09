@@ -30,7 +30,6 @@
     "mocha": "^2.1.0",
     "mocha-casperjs": "^0.5.3",
     "phantomjs": "^1.9.15",
-    "travis": "^0.1.1"
   },
   "dependencies": {
     "body-parser": "^1.11.0",
