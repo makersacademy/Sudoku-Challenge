@@ -9,7 +9,6 @@ module.exports = function(grunt) {
       all: [
       'Gruntfile.js', 
       './public/js/**/*.js',
-      './spec/**/*.js'
       ]
     },
     mochacli: {
