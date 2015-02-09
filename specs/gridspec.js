@@ -26,4 +26,11 @@ describe('Grid', function() {
     expect(grid.checkColumnHasValue("A", 7)).to.be.true;
   }); 
   
+  it('knows if a box contains a specific number', function() {
+    grid = new Grid(Object);
+    grid.init();
+    grid.cells.A1["value"] = 7;
+    expect(grid.checkBoxHasValue("1", 7)).to.be.true;
+  }); 
+
 });
