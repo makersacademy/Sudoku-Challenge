@@ -12,9 +12,8 @@ var Grid = function(content) {
 
 Grid.prototype.init = function() {
   this._buildCells();
-  this._buildRows();
-  this._buildColumns();
-  this._buildBoxes();
+  this._createGridFilters();
+  this._buildGridFilters();
 };
 
 Grid.prototype.checkBoxHasValue = function(box_number, value) {
@@ -38,58 +37,43 @@ Grid.prototype.checkColumnHasValue = function(column, value) {
   return filtered.length === 1;
 };
 
-Grid.prototype._buildBoxes = function() {
+Grid.prototype._buildGridFilters = function() {
+  this._buildFilter(this.box_indexes, this._isInBox, this.boxes); 
+  this._buildFilter(this.row_numbers, this._isInRow, this.rows); 
+  this._buildFilter(this.column_letters, this._isInColumn, this.columns); 
+};
+
+Grid.prototype._buildFilter = function(indexes, filter_check, filter) {
   var _this = this;
-  this._createBoxes();
-  _this.box_indexes.forEach(function(number) {
+  indexes.forEach(function(index) {
     Object.keys(_this.cells).forEach(function(coord) {
-      if(_this.cells[coord].box_zone === number)
-        _this.boxes[number].push(_this.cells[coord]); 
+      if(filter_check(coord, index, _this)) { filter[index].push(_this.cells[coord]); }
     });
   });
 };
 
-Grid.prototype._buildRows = function() {
-  var _this = this;
-  this._createRows();
-  _this.row_numbers.forEach(function(number) {
-    Object.keys(_this.cells).forEach(function(coord) {
-      if(coord.split("").pop() === number)
-        _this.rows[number].push(_this.cells[coord]); 
-    });
+Grid.prototype._isInBox = function(coord, index, that) {
+  return that.cells[coord].box_zone === index;
+};
+
+Grid.prototype._isInRow = function(coord, index) {
+  return coord.split("").pop() === index;
+};
+
+Grid.prototype._isInColumn = function(coord, index) {
+  return coord.split("").reverse().pop() === index;
+};
+
+Grid.prototype._createGridFilters = function() {
+  this._createFilter(this.box_indexes, this.boxes);
+  this._createFilter(this.column_letters, this.columns);
+  this._createFilter(this.row_numbers, this.rows);
+};
+
+Grid.prototype._createFilter = function(indexes, filter) {
+  indexes.forEach(function(index) {
+    filter[index] = [];
   });
-};
-
-Grid.prototype._buildColumns = function() {
-  var _this = this;
-  this._createColumns();
-  _this.column_letters.forEach(function(letter) {
-    Object.keys(_this.cells).forEach(function(coord) {
-      if(coord.split("").reverse().pop() === letter)
-        _this.columns[letter].push(_this.cells[coord]); 
-    });
-  });
-};
-
-Grid.prototype._createBoxes = function() {
-  var _this = this;
-  _this.box_indexes.forEach(function(index) {
-    _this.boxes[index] = [];
-  }); 
-};
-
-Grid.prototype._createColumns = function() {
-  var _this = this;
-  _this.column_letters.forEach(function(letter) {
-    _this.columns[letter] = [];
-  }); 
-};
-
-Grid.prototype._createRows = function() {
-  var _this = this;
-  _this.row_numbers.forEach(function(number) {
-    _this.rows[number] = [];
-  }); 
 };
 
 Grid.prototype._buildCells = function() {
