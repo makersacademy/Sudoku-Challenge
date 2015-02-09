@@ -25,7 +25,7 @@ describe Square do
     end
 
     it 'must be greater than zero' do
-      expect { square.number = 0 }.to raise_error(RuntimeError)
+      expect{ square.number = 0 }.to raise_error(RuntimeError)
     end
   end
 end

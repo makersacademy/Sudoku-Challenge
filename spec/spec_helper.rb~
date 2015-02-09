@@ -1,7 +1,7 @@
-require 'codeclimate-test-reporter'
+require "codeclimate-test-reporter"
 CodeClimate::TestReporter.start
 
-ENV['RACK_ENV'] = 'test'
+ENV["RACK_ENV"] = 'test'
 require_relative '../lib/sudoku.rb'
 require 'capybara/rspec'
 
@@ -15,5 +15,6 @@ RSpec.configure do |config|
   config.mock_with :rspec do |mocks|
     mocks.verify_partial_doubles = true
   end
+
 
 end

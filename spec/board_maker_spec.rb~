@@ -2,10 +2,10 @@ require 'spec_helper'
 require 'board_maker'
 
 describe BoardMaker do
+
   let(:maker) { BoardMaker.new }
   let(:board) { double :board, :size => 1, :squares => [:square] }
-  let(:medium_board) { double :board, :size => 2, 
-                                      :squares => Array.new(16, :square) }
+  let(:medium_board) { double :board, :size => 2, :squares => Array.new(16, :square) }
 
   it 'makes 4 rows for a size 2 board' do
     expect(maker.rows(medium_board).count).to eq 4
@@ -32,5 +32,5 @@ describe BoardMaker do
     expect(medium_board).to receive(:add).exactly(12).times
     maker.populate_regions(medium_board)
   end
-end
 
+end
