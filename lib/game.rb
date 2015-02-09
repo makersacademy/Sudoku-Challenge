@@ -1,4 +1,4 @@
-['board','region','square','board_viewer', 'board_maker'].each {|file| require_relative file + '.rb'}
+%w(board region square board_viewer board_maker).each.each {|file| require_relative file + '.rb'}
 
 class Game
 
