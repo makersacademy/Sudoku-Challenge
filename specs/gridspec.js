@@ -6,10 +6,17 @@ describe('Grid', function() {
 
   var grid;
 
-  it('should be initialised as a grid of 81 spaces', function() {
-    grid = new Grid();
+  it('can be initialised as a grid of 81 cells', function() {
+    grid = new Grid(Object);
     grid.init();
     expect(Object.keys(grid.cells).length).to.equal(81);
   });
+
+  it('knows if a row contains a number', function() {
+    grid = new Grid(Object);
+    grid.init();
+    grid.cells.A1["value"] = 7;
+    expect(grid.checkRowHasValue(1, 7)).to.be.true;
+  }); 
   
 });
