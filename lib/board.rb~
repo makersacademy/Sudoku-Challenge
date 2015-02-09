@@ -1,9 +1,10 @@
 %w(board region square board_viewer).each { |file| require_relative file + '.rb' }
 class Board
+
   attr_accessor :squares
   attr_reader :regions, :size
 
-  # TODO: refactor
+  # TODO refactor
   def initialize(size = 1)
     @regions = []
     @squares = []

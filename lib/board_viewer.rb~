@@ -9,7 +9,7 @@ class BoardViewer
   end  
 
   def show_row(row)
-    row.squares.map {|square| square.number ? square.number : 0 }
+    row.squares.map {|square| square.number ? square.number : ! }
   end
   
   def show(board)

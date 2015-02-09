@@ -6,8 +6,10 @@ require 'board_viewer'
 describe BoardViewer do
   it 'converts a one-by-one board into an array of row values' do
     board = Board.new
-    board.add (region = Region.new)
+    region = Region.new
+    region.type = :row
     region.add (square = Square.new)
+    board.add (region)
 
     viewer = BoardViewer.new
     expect(viewer.show(board)).to eq( [[0]] )
