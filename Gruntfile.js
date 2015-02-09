@@ -35,5 +35,6 @@ module.exports = function(grunt){
   grunt.loadNpmTasks('grunt-mocha-casperjs');
 
   grunt.registerTask('default', ['jasmine_node', 'jshint', 'mocha_casperjs']);
+  grunt.registerTask('travis', ['jasmine_node', 'jshint', 'mocha_casperjs']);
 
 };
