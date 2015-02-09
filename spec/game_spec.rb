@@ -21,7 +21,7 @@ describe Game do
   it 'can complete a size 2 game' do
     game2 = Game.new(2)
     expect(game2.finished?).to be(false)
-    15.times { game2.make_a_move }
+    16.times { game2.make_a_move }
     expect(game2.finished?).to be(true)
   end
 

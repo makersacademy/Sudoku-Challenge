@@ -13,7 +13,6 @@ Feature: See computer solution
     When I get the computer to make a move
     Then I see a completed board
 
-
   Scenario: I get a message when the game is completed
     Given I have a single square game
     When I get the computer to make a move
