@@ -40,6 +40,6 @@ class BoardMaker
     region = Region.new
     squares.each { |square| region.add(square) }
     region.type = type
-    board.add(region)
+    board.add_region(region)
   end
 end

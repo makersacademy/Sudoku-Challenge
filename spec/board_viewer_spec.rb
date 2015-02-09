@@ -9,7 +9,7 @@ describe BoardViewer do
     region = Region.new
     region.type = :row
     region.add (square = Square.new)
-    board.add (region)
+    board.add_region (region)
 
     viewer = BoardViewer.new
     expect(viewer.show(board)).to eq( [[0]] )

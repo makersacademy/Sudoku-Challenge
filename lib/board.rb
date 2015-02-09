@@ -16,7 +16,7 @@ class Board
     self
   end
 
-  def add(region)
+  def add_region(region)
     @regions << region
   end
 
