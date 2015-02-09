@@ -24,7 +24,15 @@ module.exports = function(grunt){
     watch: {
       scripts: {
         files: ['app/**/*.js', 'spec/*.js', 'test/*.js', 'app/views/*.ejs'],
-        tasks: ['jasmine_node', 'jshint', 'mocha_casperjs']
+        tasks: ['express:test', 'jasmine_node', 'jshint', 'mocha_casperjs']
+      }
+    },
+
+    express: {
+      test: {
+        options: {
+          script: 'server.js',
+        }
       }
     }
   });
@@ -33,8 +41,9 @@ module.exports = function(grunt){
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-mocha-casperjs');
+  grunt.loadNpmTasks('grunt-express-server');
 
-  grunt.registerTask('default', ['jasmine_node', 'jshint', 'mocha_casperjs']);
-  grunt.registerTask('travis', ['jasmine_node', 'jshint', 'mocha_casperjs']);
+  grunt.registerTask('default', ['express:test', 'jasmine_node', 'jshint', 'mocha_casperjs']);
+  grunt.registerTask('travis', ['express:test', 'jasmine_node', 'jshint', 'mocha_casperjs']);
 
 };
