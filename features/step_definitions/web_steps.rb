@@ -6,6 +6,10 @@ When(/^I follow "(.*?)"$/) do |link|
   click_link(link)
 end
 
+When(/^I click button "(.*?)"$/) do |button|
+  click_button(button)
+end
+
 Then(/^I see a "(.*?)" message$/) do |message|
   expect(page).to have_content(message)
 end
@@ -17,7 +21,7 @@ end
 
 Given(/^I have a single square game$/) do
   step('I visit the homepage')
-  step('I follow "New Game"')
+  step('I click button "New Game"')
 end
 
 When(/^I get the computer to make a move$/) do

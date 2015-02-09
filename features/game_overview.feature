@@ -5,7 +5,7 @@ Feature: See computer solution
 
   Scenario: See blank board
     Given I visit the homepage
-    When I follow "New Game"
+    When I click button "New Game"
     Then I see a blank board
 
   Scenario: Complete single square game

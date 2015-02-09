@@ -7,13 +7,22 @@ class Sudoku < Sinatra::Base
 
    GAME = Game.new
 
-  get '/' do
-    GAME = Game.new if GAME.finished? # this needs refactoring!
+  get '/play' do
+    # GAME = Game.new if GAME.finished? # this needs refactoring!
     number_moves = params[:number_moves].to_i
     number_moves.times { GAME.make_a_move } 
     @board_view = GAME.show_board
     @finished = GAME.finished?
     erb :index
+  end
+
+  get '/' do
+    erb :board_select
+  end
+
+  get '/new_game' do
+    GAME = Game.new(params[:board_size].to_i)
+    redirect '/play'
   end
 
   # post '/advance' do
