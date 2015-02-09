@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for specs/cellspec.js</title>
+    <title>Code coverage report for specs/gridspec.js</title>
     <meta charset="utf-8">
 
     <link rel="stylesheet" href="../prettify.css">
@@ -196,23 +196,23 @@
 </head>
 <body>
 <div class="header high">
-    <h1>Code coverage report for <span class="entity">specs/cellspec.js</span></h1>
+    <h1>Code coverage report for <span class="entity">specs/gridspec.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">100% <small>(29 / 29)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">100% <small>(24 / 24)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
         Branches: <span class="metric">100% <small>(0 / 0)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Functions: <span class="metric">100% <small>(12 / 12)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">100% <small>(5 / 5)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">100% <small>(25 / 25)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">100% <small>(24 / 24)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
-    <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">specs/</a> &#187; cellspec.js</div>
+    <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">specs/</a> &#187; gridspec.js</div>
 </div>
 <div class="body">
 <pre><table class="coverage">
@@ -252,14 +252,7 @@
 34
 35
 36
-37
-38
-39
-40
-41
-42
-43
-44</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+37</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -268,14 +261,6 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">6</span>
-<span class="cline-any cline-yes">6</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
@@ -284,9 +269,6 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -294,8 +276,12 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
@@ -304,45 +290,38 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">var chai = require('chai');
 var expect = chai.expect;
-var Cell = require('../public/js/cell')
+var Grid = require('../public/js/grid');
 &nbsp;
-describe('Cell', function() {
+describe('Grid', function() {
 &nbsp;
-  var cell;
+  var grid;
 &nbsp;
-  beforeEach(function(done) {
-    cell = new Cell(); 
-    done();
+  it('can be initialised as a grid of 81 cells', function() {
+    grid = new Grid(Object);
+    grid.init();
+    expect(Object.keys(grid.cells).length).to.equal(81);
   });
 &nbsp;
-  it ('is empty when created', function() {
-    expect(cell.isEmpty()).to.be.true;
-  });
+  it('knows if a row contains a specific number', function() {
+    grid = new Grid(Object);
+    grid.init();
+    grid.cells.A1["value"] = 7;
+    expect(grid.checkRowHasValue(1, 7)).to.be.true;
+  }); 
 &nbsp;
-  it ('can be assigned a value', function() {
-    cell.assignValue(8);
-    expect(cell.value).to.equal(8);
-  });
-&nbsp;
-  it ('can only be assigned a single digit value', function() {
-    expect( function() { cell.assignValue(10) } ).to.throw('Cell value must be 1-9.');
-    expect(cell.isEmpty()).to.be.true;
-  });
-&nbsp;
-  it ('can only be assigned a positive value', function() {
-    expect( function() { cell.assignValue(-9) } ).to.throw('Cell value must be positive.');
-    expect(cell.isEmpty()).to.be.true;
-  });
-&nbsp;
-  it ('can only be assigned an integer value', function() {
-    expect( function() { cell.assignValue(4.2352) } ).to.throw('Cell value must be an integer.');
-    expect(cell.isEmpty()).to.be.true;
-  });
-&nbsp;
-  it ('can not be assigned the value zero', function() {
-    expect( function() { cell.assignValue(0) } ).to.throw('Cell value must be 1-9.');
-    expect(cell.isEmpty()).to.be.true;
-  });
+  it('knows if a column contains a specific number', function() {
+    grid = new Grid(Object);
+    grid.init();
+    grid.cells.A1["value"] = 7;
+    expect(grid.checkColumnHasValue("A", 7)).to.be.true;
+  }); 
+  
+  it('knows if a box contains a specific number', function() {
+    grid = new Grid(Object);
+    grid.init();
+    grid.cells.A1["value"] = 7;
+    expect(grid.checkBoxHasValue("1", 7)).to.be.true;
+  }); 
 &nbsp;
 });
 &nbsp;</pre></td></tr>
