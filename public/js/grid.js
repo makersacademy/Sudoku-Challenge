@@ -16,22 +16,8 @@ Grid.prototype.init = function() {
   this._buildGridFilters();
 };
 
-Grid.prototype.checkBoxHasValue = function(box_number, value) {
-  var filtered = this.boxes[box_number].filter(function(cell) {
-    return cell.value === value;
-  });
-  return filtered.length === 1;
-};
-
-Grid.prototype.checkRowHasValue = function(row, value) {
-  var filtered = this.rows[row].filter(function(cell) {
-    return cell.value === value;
-  });
-  return filtered.length === 1;
-};
-
-Grid.prototype.checkColumnHasValue = function(column, value) {
-  var filtered = this.columns[column].filter(function(cell) {
+Grid.prototype.checkFilterHasValue = function(filter_type, filter_no, value) {
+  var filtered = filter_type[filter_no].filter(function(cell) {
     return cell.value === value;
   });
   return filtered.length === 1;
