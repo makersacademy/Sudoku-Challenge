@@ -34,7 +34,15 @@ class Board
   end
 
   def play(square, chosen_number)
+    raise("Square already played") if square.played?
+    squares.delete(square)
+    squares.push(square)
     square.number = chosen_number
   end
+
+  def play_order(square)
+    squares.index(square)
+  end
+
 
 end

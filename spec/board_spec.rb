@@ -49,6 +49,22 @@ describe Board do
       expect(board.unplayed_squares.count).to eq(0)
     end
 
+    it 'cant play a square twice' do
+      board = Board.new.populate
+      square = square = board.squares.first
+      board.play(square, 1)
+      expect { board.play(square, 1)} .to raise_error(RuntimeError)
+    end
+
+    it 'knows what order two squares were played in' do
+      board = Board.new(2).populate
+      square1 = board.squares.first
+      square2 = board.squares.last
+      board.play(square2, 1)
+      board.play(square1, 2)
+      expect(board.play_order(square2)<board.play_order(square1)).to be true
+    end
+
   end
 
   context 'legal moves' do
