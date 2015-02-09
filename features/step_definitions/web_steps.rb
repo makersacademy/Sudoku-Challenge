@@ -33,10 +33,6 @@ Then(/^I see a partly completed board$/) do
   expect(page).to have_content('1')
 end
 
-When(/^I select computer completes board$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
 Then(/^I see a completed board$/) do
   expect(page).not_to have_content('0')
 end

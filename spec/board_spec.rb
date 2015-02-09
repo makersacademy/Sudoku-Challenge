@@ -42,6 +42,13 @@ describe Board do
       expect(board.unplayed_squares.count).to eq(16)
     end
 
+    it 'can play a square' do
+      board = Board.new.populate
+      square = square = board.squares.first
+      board.play(square, 1)
+      expect(board.unplayed_squares.count).to eq(0)
+    end
+
   end
 
   context 'legal moves' do

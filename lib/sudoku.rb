@@ -6,9 +6,7 @@ class Sudoku < Sinatra::Base
   set :views, Proc.new { File.join(root, "..", "views") }
 
   get '/play' do
-    # GAME = Game.new if GAME.finished? # this needs refactoring!
-    number_moves = params[:number_moves].to_i
-    number_moves.times { GAME.make_a_move } 
+    params[:number_moves].to_i.times { GAME.make_a_move } 
     @board_view = GAME.show_board
     @finished = GAME.finished?
     erb :index
@@ -23,13 +21,5 @@ class Sudoku < Sinatra::Base
     redirect '/play'
   end
 
-  # post '/advance' do
-  #   number_moves = params[:number_moves].to_i
-  #   number_moves.times { GAME.make_a_move }
-  #   redirect '/'
-  # end
-
-
-  # start the server if ruby file executed directly
   run! if app_file == $0
 end

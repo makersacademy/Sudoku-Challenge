@@ -33,4 +33,8 @@ class Board
     regions_containing(square).map { |region| region.possible_plays }.inject(:&)
   end
 
+  def play(square, chosen_number)
+    square.number = chosen_number
+  end
+
 end
