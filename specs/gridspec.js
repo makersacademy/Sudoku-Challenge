@@ -12,11 +12,18 @@ describe('Grid', function() {
     expect(Object.keys(grid.cells).length).to.equal(81);
   });
 
-  it('knows if a row contains a number', function() {
+  it('knows if a row contains a specific number', function() {
     grid = new Grid(Object);
     grid.init();
     grid.cells.A1["value"] = 7;
     expect(grid.checkRowHasValue(1, 7)).to.be.true;
+  }); 
+
+  it('knows if a column contains a specific number', function() {
+    grid = new Grid(Object);
+    grid.init();
+    grid.cells.A1["value"] = 7;
+    expect(grid.checkColumnHasValue("A", 7)).to.be.true;
   }); 
   
 });
