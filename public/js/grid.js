@@ -16,6 +16,26 @@ Grid.prototype.init = function() {
   this._buildGridFilters();
 };
 
+Grid.prototype.findCellSolutions = function(coord) {
+  var _this = this;
+  var options = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
+  var solutions = [];
+  options.forEach(function(option) {
+    if (!_this.isValuePossible(coord, option)) {
+      solutions.push(option);
+    }
+  });
+  return solutions;
+};
+
+Grid.prototype.isValuePossible = function(coord, value) {
+  var _this = this;
+    return (_this.checkFilterHasValue(_this.rows, coord.split("").pop(), value) ||
+    _this.checkFilterHasValue(_this.columns, coord.split("").reverse().pop(), value) ||
+    _this.checkFilterHasValue(_this.boxes, _this.cells[coord].box_zone, value) );
+};
+
+
 Grid.prototype.loadPuzzle = function(string) {
   var _this = this;
   var i = 0;

@@ -39,4 +39,11 @@ describe('Grid', function() {
     grid.loadPuzzle("8194.237.63.7.14895.78...12.....392632469715.....28743763....94291.....74..97...1");
     expect(grid.isReady()).to.be.true;
   });
+
+  it('can determine the possible solutions to an empty cell', function() {
+    grid = new Grid(Object); 
+    grid.init();
+    grid.loadPuzzle("8194.237.63.7.14895.78...12.....392632469715.....28743763....94291.....74..97...1");
+    expect(grid.findCellSolutions("A5")).to.eql(["5", "6"]);
+  });
 });
