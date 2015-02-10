@@ -35,7 +35,6 @@ Grid.prototype.isValuePossible = function(coord, value) {
     _this.checkFilterHasValue(_this.boxes, _this.cells[coord].box_zone, value) );
 };
 
-
 Grid.prototype.loadPuzzle = function(string) {
   var _this = this;
   var i = 0;
