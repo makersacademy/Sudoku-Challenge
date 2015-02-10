@@ -5,7 +5,7 @@ class Sudoku < Sinatra::Base
   set :views, Proc.new { File.join(root, '..', 'views') }
 
   get '/play' do
-    params[:number_moves].to_i.times { GAME.make_a_move }
+    params[:number_moves].to_i.times { GAME.make_a_move } 
     @board_view = GAME.show_board
     @finished = GAME.finished?
     erb :index

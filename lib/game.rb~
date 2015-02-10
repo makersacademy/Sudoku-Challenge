@@ -3,6 +3,7 @@
 end
 
 class Game
+
   def initialize(size=1)
     @board = Board.new(size).populate
   end
@@ -32,4 +33,5 @@ class Game
     last_played_square = @board.squares[-1]
     @board.remove_play(last_played_square)
   end
+
 end
