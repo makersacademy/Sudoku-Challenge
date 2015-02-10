@@ -16,6 +16,28 @@ Grid.prototype.init = function() {
   this._buildGridFilters();
 };
 
+Grid.prototype.loadPuzzle = function(string) {
+  var _this = this;
+  var i = 0;
+  Object.keys(_this.cells).forEach(function(coord) {
+    if(string.split("")[i] === ".") {
+      _this.cells[coord].value = null;
+    } else {
+      _this.cells[coord].value = string.split("")[i]; 
+    }
+    i++;
+  });
+};
+
+Grid.prototype.isReady = function() {
+  var _this = this;
+  var ready_check = true;
+  Object.keys(_this.cells).forEach(function(coord) {
+    if (_this.cells[coord].value === undefined) { ready_check = false; } 
+  });
+  return ready_check;
+};
+
 Grid.prototype.checkFilterHasValue = function(filter_type, filter_no, value) {
   var filtered = filter_type[filter_no].filter(function(cell) {
     return cell.value === value;

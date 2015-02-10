@@ -33,4 +33,10 @@ describe('Grid', function() {
     expect(grid.checkFilterHasValue(grid.boxes, "1", 7)).to.be.true;
   }); 
 
+  it('can be populated with a string of 81 digits', function() {
+    grid = new Grid(Object); 
+    grid.init();
+    grid.loadPuzzle("8194.237.63.7.14895.78...12.....392632469715.....28743763....94291.....74..97...1");
+    expect(grid.isReady()).to.be.true;
+  });
 });
