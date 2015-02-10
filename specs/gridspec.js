@@ -41,5 +41,8 @@ describe('Grid', function() {
   });
 
   it('can solve a cell with only one solution', function() {
+    grid.loadPuzzle("8194.237563.7.14895.78...12.....392632469715.....28743763....94291.....74..97...1");
+    grid.solveCell("A5");
+    expect(grid.cells["A5"].value).to.equal("6");
   });
 });

@@ -16,6 +16,11 @@ Grid.prototype.init = function() {
   this._buildGridFilters();
 };
 
+Grid.prototype.solveCell = function(coord) {
+  if (this.findCellSolutions(coord).length === 1) 
+    this.cells[coord].value = this.findCellSolutions(coord).pop();
+};
+
 Grid.prototype.findCellSolutions = function(coord) {
   var _this = this;
   var options = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
