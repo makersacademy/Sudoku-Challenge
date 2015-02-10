@@ -199,16 +199,16 @@
     <h1>Code coverage report for <span class="entity">specs/gridspec.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">100% <small>(34 / 34)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">100% <small>(38 / 38)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
         Branches: <span class="metric">100% <small>(0 / 0)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Functions: <span class="metric">100% <small>(7 / 7)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">100% <small>(11 / 11)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">100% <small>(34 / 34)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">100% <small>(38 / 38)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
@@ -265,36 +265,34 @@
 47
 48
 49
-50</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
@@ -303,11 +301,35 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
@@ -321,46 +343,57 @@ var Grid = require('../public/js/grid');
 describe('Grid', function() {
 &nbsp;
   var grid;
-&nbsp;
-  it('can be initialised as a grid of 81 cells', function() {
+  beforeEach(function(done) {
     grid = new Grid(Object);
     grid.init();
+    done();
+  });
+&nbsp;
+  it('can be initialised as a grid of 81 cells', function() {
     expect(Object.keys(grid.cells).length).to.equal(81);
   });
 &nbsp;
   it('knows if a row contains a specific number', function() {
-    grid = new Grid(Object);
-    grid.init();
     grid.cells.A1["value"] = 7;
     expect(grid.checkFilterHasValue(grid.rows, 1, 7)).to.be.true;
   }); 
 &nbsp;
   it('knows if a column contains a specific number', function() {
-    grid = new Grid(Object);
-    grid.init();
     grid.cells.A1["value"] = 7;
     expect(grid.checkFilterHasValue(grid.columns, "A", 7)).to.be.true;
   }); 
   
   it('knows if a box contains a specific number', function() {
-    grid = new Grid(Object);
-    grid.init();
     grid.cells.A1["value"] = 7;
     expect(grid.checkFilterHasValue(grid.boxes, "1", 7)).to.be.true;
   }); 
 &nbsp;
   it('can be populated with a string of 81 digits', function() {
-    grid = new Grid(Object); 
-    grid.init();
     grid.loadPuzzle("8194.237.63.7.14895.78...12.....392632469715.....28743763....94291.....74..97...1");
     expect(grid.isReady()).to.be.true;
   });
 &nbsp;
   it('can determine the possible solutions to an empty cell', function() {
-    grid = new Grid(Object); 
-    grid.init();
     grid.loadPuzzle("8194.237.63.7.14895.78...12.....392632469715.....28743763....94291.....74..97...1");
     expect(grid.findCellSolutions("A5")).to.eql(["5", "6"]);
+  });
+&nbsp;
+  it('can solve a cell with only one solution', function() {
+    grid.loadPuzzle("8194.237563.7.14895.78...12.....392632469715.....28743763....94291.....74..97...1");
+    grid.solveCell("A5");
+    expect(grid.cells["A5"].value).to.equal("6");
+  });
+&nbsp;
+  it('can solve an easy puzzle', function() {
+    grid.loadPuzzle("8.946237563275148.54783961217854392632469.1589561287437632158.4291384567.85976231");
+    grid.solve();
+    expect(grid.printSolution()).to.equal("819462375632751489547839612178543926324697158956128743763215894291384567485976231");
+  });
+&nbsp;
+  it('can solve an medium puzzle', function() {
+    grid.loadPuzzle("8.9.6.3.5....51.8.54.839......5439...2....158...128743763...8.42....4567.859....1");
+    grid.solve();
+    expect(grid.printSolution()).to.equal("819462375632751489547839612178543926324697158956128743763215894291384567485976231");
   });
 });
 &nbsp;</pre></td></tr>
@@ -368,7 +401,7 @@ describe('Grid', function() {
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Feb 10 2015 12:56:01 GMT+0000 (GMT)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Feb 10 2015 16:17:20 GMT+0000 (GMT)</div>
 </div>
 
 <script src="../prettify.js"></script>
