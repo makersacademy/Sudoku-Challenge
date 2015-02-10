@@ -42,7 +42,7 @@ cucumber, rspec
 
 ### Images
 
-![board](/public/img/board.png)
+![board](/public/img/board2.png)
 
 ### To do
 
