@@ -45,4 +45,10 @@ describe('Grid', function() {
     grid.solveCell("A5");
     expect(grid.cells["A5"].value).to.equal("6");
   });
+
+  it('can solve an easy puzzle', function() {
+    grid.loadPuzzle("8.946237563275148.54783961217854392632469.1589561287437632158.4291384567.85976231");
+    grid.solve();
+    expect(grid.printSolution()).to.equal("819462375632751489547839612178543926324697158956128743763215894291384567485976231");
+  });
 });
