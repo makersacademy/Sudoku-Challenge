@@ -19,9 +19,8 @@ Grid.prototype.init = function() {
 Grid.prototype.solve = function() {
   var _this = this;
   while (this._isSolved() === false) {
-    Object.keys(this.cells).forEach(function(coord) {
-      _this.solveCell(coord);
-    });
+    for (var i in this.cells)
+      _this.solveCell(i);
   }
 };
 
