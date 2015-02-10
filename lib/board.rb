@@ -30,17 +30,17 @@ class Board
   end
 
   def available_moves(square)
-    regions_containing(square).map { |region| region.possible_plays }.inject(:&)
+    regions_containing(square).map(&:possible_plays).reduce(:&)
   end
 
   def play(square, chosen_number)
-    raise("Square already played") if square.played?
+    raise('Square already played') if square.played?
     squares.delete(square)
     squares.push(square)
     square.number = chosen_number
   end
 
-   def remove_play(square)
+  def remove_play(square)
     squares.delete(square)
     squares.unshift(square)
     square.remove_number
@@ -49,6 +49,4 @@ class Board
   def play_order(square)
     squares.index(square)
   end
-
-
 end
