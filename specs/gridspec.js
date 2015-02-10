@@ -51,4 +51,10 @@ describe('Grid', function() {
     grid.solve();
     expect(grid.printSolution()).to.equal("819462375632751489547839612178543926324697158956128743763215894291384567485976231");
   });
+
+  it('can solve an medium puzzle', function() {
+    grid.loadPuzzle("8.9.6.3.5....51.8.54.839......5439...2....158...128743763...8.42....4567.859....1");
+    grid.solve();
+    expect(grid.printSolution()).to.equal("819462375632751489547839612178543926324697158956128743763215894291384567485976231");
+  });
 });
