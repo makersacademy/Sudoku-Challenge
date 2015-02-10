@@ -16,6 +16,39 @@ Grid.prototype.init = function() {
   this._buildGridFilters();
 };
 
+Grid.prototype.solve = function() {
+  var _this = this;
+  while (this._isSolved() === false) {
+    Object.keys(this.cells).forEach(function(coord) {
+      _this.solveCell(coord);
+    });
+  }
+};
+
+Grid.prototype._isSolved = function() {
+  var solved;
+  var _this = this;
+  Object.keys(this.cells).forEach(function(coord) {
+    if(_this.cells[coord].value === null)
+      solved = false;
+  });
+  return solved;
+};
+
+Grid.prototype.printSolution = function() {
+  var solution = "";
+  var _this = this;
+  Object.keys(_this.cells).forEach(function(coord) {
+    solution += _this.cells[coord].value;
+  });
+  return solution;
+};
+
+Grid.prototype.solveCell = function(coord) {
+  if (!this.cells[coord].value && this.findCellSolutions(coord).length === 1) 
+    this.cells[coord].value = this.findCellSolutions(coord).pop();
+};
+
 Grid.prototype.findCellSolutions = function(coord) {
   var _this = this;
   var options = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
@@ -34,7 +67,6 @@ Grid.prototype.isValuePossible = function(coord, value) {
     _this.checkFilterHasValue(_this.columns, coord.split("").reverse().pop(), value) ||
     _this.checkFilterHasValue(_this.boxes, _this.cells[coord].box_zone, value) );
 };
-
 
 Grid.prototype.loadPuzzle = function(string) {
   var _this = this;
