@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sudoku Solver</title>
+		<link rel="stylesheet" type="text/css" href="/css/stylesheet.css"/>
+	</head>
+	<body>
+		<section>
+			<h1>Sudoku Solver</h1>
+			<p>Please enter the initial numbers:</p>
+			<form id="number-form" action="/solution" method="post">
+				<table>
+					<% rows.forEach(function(row) { %>
+					  <tr>
+					    <% row.forEach(function(cell) { %>
+					    	<td><input size="1" type="text" name="<%= cell %>"></td>
+					    <% }); %>
+					 </tr>
+					<% }); %>
+				</table>
+				<br>
+				<input type="submit" value="Solve!">
+			</form>
+		</section>
+	</body>
+</html>
