@@ -1,6 +1,6 @@
 var chai = require('chai');
 var expect = chai.expect;
-var Cell = require('../public/js/cell')
+var Cell = require('../src/cell')
 
 describe('Cell', function() {
 

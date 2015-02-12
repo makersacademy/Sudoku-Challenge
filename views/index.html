@@ -4,24 +4,23 @@
   <center>
   <head>
     <link rel="stylesheet" type="text/css" href="../css/stylesheet.css"> 
-    <script src="/js/grid.js"></script>
-    <script src="/js/cell.js"></script>
+    <script src="/vendor/jquery.js"></script>
+    <script src="/js/app.js"></script>
   </head>
 
   <body>
     <h1>Sudoku Solver</h1>
     Please enter your Sudoku challenge as a string with "." for unsolved cells.
-    <form method="POST" action="/">
-      <input id="sudokustring" type="text" value="">
-      <br>
-      <input type="submit" value="Solve">
+    <form id="solver">
+      <input id="sudokustring" type="text" name="sudokustring" placeholder="53..7....6..195....98....6.8...6...34..8.3..17...2...6.6....28....419..5....8..79">
+      <button id="solve" type="submit">Solve</button>
     </form>
-    <br>
+      <button id="preview">Preview</button>
 
 
     <table>
       <tr>
-        <td></td>
+        <td><input type="text" value=""></td>
         <td><input type="text" value=""></td>
         <td><input type="text" value=""></td>
         <td><input type="text" value=""></td>

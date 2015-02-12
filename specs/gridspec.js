@@ -1,6 +1,6 @@
 var chai = require('chai');
 var expect = chai.expect;
-var Grid = require('../public/js/grid');
+var Grid = require('../src/grid');
 
 describe('Grid', function() {
 
