@@ -27,3 +27,6 @@ input[type="text"]:hover {
   box-shadow: 0 0 5px 1px #969696;
 }
 
+#sudokustring {
+  width: 70%;
+}

@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 
 <html>
+  <center>
   <head>
     <link rel="stylesheet" type="text/css" href="../css/stylesheet.css"> 
+    <script src="/js/grid.js"></script>
+    <script src="/js/cell.js"></script>
   </head>
 
   <body>
     <h1>Sudoku Solver</h1>
-    <input id="sudokustring" type="text" value="">
+    Please enter your Sudoku challenge as a string with "." for unsolved cells.
+    <form method="POST" action="/">
+      <input id="sudokustring" type="text" value="">
+      <br>
+      <input type="submit" value="Solve">
+    </form>
+    <br>
+
 
     <table>
       <tr>
-        <td><input type="text" value=""></td>
+        <td></td>
         <td><input type="text" value=""></td>
         <td><input type="text" value=""></td>
         <td><input type="text" value=""></td>
