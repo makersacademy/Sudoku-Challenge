@@ -1,7 +1,7 @@
 $(document).ready(function() {
   $('#preview').on('click', function() {
     $('#sudokustring').val().split("").forEach(function(number, i) {
-      $($('td input')[i]).val(number)
+      $($('td input')[i]).val(number);
     });
   });
 
@@ -9,7 +9,7 @@ $(document).ready(function() {
     event.preventDefault();
     $.post( "/", $( "#sudokustring" ).serialize(), function( data ) {
       data.split("").forEach(function(number,i) {
-        $($('td input')[i]).val(number)
+        $($('td input')[i]).val(number);
       });
     });
   });
