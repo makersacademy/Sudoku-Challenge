@@ -17,12 +17,13 @@ module.exports = function(grunt) {
         reporter: 'spec',
         bail: true
       },
-      all: ['specs/*.js']
+      all: ['specs/*.js', 'tests/*.js']
     },
     watch: {
       files: [ 
       './public/js/*.js',
-      './specs/*.js'
+      './specs/*.js',
+      './tests/*.js'
       ], 
       tasks: ['mochacli', 'jshint']
     }

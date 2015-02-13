@@ -25,6 +25,7 @@
     "grunt-mocha-cli": "^1.12.0",
     "jshint": "^2.6.0",
     "mocha": "^2.1.0",
+    "webdriverio": "^2.4.5"
   },
   "dependencies": {
     "express": "^4.11.2"
