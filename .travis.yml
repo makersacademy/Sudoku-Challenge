@@ -2,9 +2,8 @@ language: node_js
 node_js:
 - '0.10'
 addons:
-  sauce_connect: true
-env:
-  global:
-    - secure: OLQcRKbfVyf8cKXpK+yza47JT9loOoGnItxfjswl7nWdlHqsbV1WrJlK1EtIRVSi424r1vvqjArMTPZd23Bx0Gqg1d7ovth270OfeD85wYuRIjgoLc9OPNQkcJBDmYpUxPrffXAcNDTaMRKOAXXJ4C7eh6f3o8qsatnARNl6reQ=
-    - secure: svuA2JcQlW7i5guov2dBsBEJhzl0TGzEbVCUTOXIqPmeqDshQ9ImeGlOQIPHziwknbUlFdqSZdiZm1+dbAFnjUgaK9CLUH4VTqJbUqnA6UdmnDqwCXnqZV8suerpzjqkIhGFClnhZ2htLNkxWUqJR+yBjMSRCnxGUIqk3Z+YoEw=
+  sauce_connect:
+    username: "nickbdyer" 
+    access_key:
+      secure: "svuA2JcQlW7i5guov2dBsBEJhzl0TGzEbVCUTOXIqPmeqDshQ9ImeGlOQIPHziwknbUlFdqSZdiZm1+dbAFnjUgaK9CLUH4VTqJbUqnA6UdmnDqwCXnqZV8suerpzjqkIhGFClnhZ2htLNkxWUqJR+yBjMSRCnxGUIqk3Z+YoEw="
 
