@@ -7,7 +7,7 @@ module.exports = function(grunt) {
         jasmine: true
       },
       all: [
-      'Gruntfile.js', 
+      'Gruntfile.js',
       './public/js/**/*.js',
       ]
     },
@@ -20,11 +20,11 @@ module.exports = function(grunt) {
       all: ['specs/*.js', 'tests/*.js']
     },
     watch: {
-      files: [ 
+      files: [
       './public/js/*.js',
       './specs/*.js',
       './tests/*.js'
-      ], 
+      ],
       tasks: ['mochacli', 'jshint']
     }
   });
