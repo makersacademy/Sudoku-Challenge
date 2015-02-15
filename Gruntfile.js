@@ -50,5 +50,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-mocha-cli');
   grunt.loadNpmTasks('grunt-webdriver');
   grunt.registerTask('default', ['watch']);
-  grunt.registerTask('test', ['mochacli']);
+  grunt.registerTask('test', ['mochacli', 'webdriver']);
 };
