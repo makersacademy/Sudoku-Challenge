@@ -1,9 +1,4 @@
 language: node_js
 node_js:
 - '0.10'
-addons:
-  sauce_connect:
-    username: "nickbdyer" 
-    access_key:
-      secure: "svuA2JcQlW7i5guov2dBsBEJhzl0TGzEbVCUTOXIqPmeqDshQ9ImeGlOQIPHziwknbUlFdqSZdiZm1+dbAFnjUgaK9CLUH4VTqJbUqnA6UdmnDqwCXnqZV8suerpzjqkIhGFClnhZ2htLNkxWUqJR+yBjMSRCnxGUIqk3Z+YoEw="
 
