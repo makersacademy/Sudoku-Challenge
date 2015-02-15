@@ -1,9 +1,9 @@
 language: node_js
 node_js:
 - '0.10'
-  addons:
-      sauce_connect:
-            username: process.env.SAUCE_USERNAME 
-                  access_key: process.env.SAUCE_ACCESS_KEY
+addons:
+  sauce_connect:
+   username: process.env.SAUCE_USERNAME 
+   access_key: process.env.SAUCE_ACCESS_KEY
                     
 
