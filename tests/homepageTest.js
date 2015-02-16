@@ -21,7 +21,7 @@ describe('Visiting the homepage', function() {
         user: username,
         key: access_key,
         logLevel: 'silent',
-        tunnel-identifier: process.env.TRAVIS_JOB_NUMBER
+        'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER
     });
     client.init(done);
   });
