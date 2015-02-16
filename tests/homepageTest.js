@@ -8,7 +8,7 @@ describe('Visiting the homepage', function() {
   before(function(done) {
     client = webdriverio.remote({
         desiredCapabilities: {
-            browserName: 'chrome',
+            browserName: 'firefox',
             version: '27',
             platform: 'XP',
             tags: ['examples'],
