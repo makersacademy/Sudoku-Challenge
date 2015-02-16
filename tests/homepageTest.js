@@ -29,7 +29,7 @@ describe('Visiting the homepage', function() {
 
   beforeEach(function(done) {
     client
-      .url('http://localhost:3000')
+      .url('http://localhost:4445')
       .call(done);
   });
 
