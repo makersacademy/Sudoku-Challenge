@@ -20,7 +20,8 @@ module.exports = function(grunt) {
           desiredCapabilities: {
               browserName: 'chrome',
               version: '27',
-              platform: 'XP'
+              platform: 'XP',
+              'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER 
           }
       },
       homepage: {
