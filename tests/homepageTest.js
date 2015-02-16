@@ -14,8 +14,8 @@ describe('Visiting the homepage', function() {
             tags: ['examples'],
             name: 'This is an example test'
         },
-        host: "http://process.env.SAUCEUSERNAME:process.env.SAUCE_ACCESS_KEY@localhost:4445/wd/hub",
-        port: 4445,
+        host: 'ondemand.saucelabs.com',
+        port: 80,
         user: process.env.SAUCE_USERNAME,
         key: process.env.SAUCE_ACCESS_KEY,
         logLevel: 'silent'
