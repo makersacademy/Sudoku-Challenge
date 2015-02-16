@@ -13,12 +13,7 @@ describe('Visiting the homepage', function() {
             platform: 'XP',
             tags: ['examples'],
             name: 'This is an example test'
-        },
-        host: 'ondemand.saucelabs.com',
-        port: 80,
-        user: process.env.SAUCE_USERNAME,
-        key: process.env.SAUCE_ACCESS_KEY,
-        logLevel: 'silent'
+        }
     });
     client.init(done);
   });
