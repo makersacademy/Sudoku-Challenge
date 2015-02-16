@@ -7,5 +7,7 @@ addons:
   sauce_connect: true
 
 before_script:
+    - "curl -O http://selenium-release.storage.googleapis.com/2.43/selenium-server-standalone-2.43.1.jar"
+    - "java -jar selenium-server-standalone-2.43.1.jar 2>&1 >/dev/null &"
     - "&>/dev/null nodemon &"
     - sleep 3
