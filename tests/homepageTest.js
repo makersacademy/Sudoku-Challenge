@@ -16,7 +16,7 @@ describe('Visiting the homepage', function() {
             tags: ['Sudoku'],
             name: 'This is a test on sauce labs'
         },
-        host: 'http://' + username + ':' + access_key + '@ondemand.saucelabs.com/wd/hub',
+        host: 'ondemand.saucelabs.com',
         port: 80,
         user: username,
         key: access_key,
