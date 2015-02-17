@@ -22,14 +22,14 @@ describe('Visiting the homepage', function() {
         user: username,
         key: access_key,
         updateSauceJob: true,
-        logLevel: 'silent'
+        logLevel: 'silent',
     });
     client.init(done);
   });
 
-  after(function(done) {
+  after(function() {
     client
-      .end(done);
+      .end(true);
   });
 
   beforeEach(function(done) {
