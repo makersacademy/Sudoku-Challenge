@@ -9,8 +9,6 @@ describe('Visiting the homepage', function() {
     client = webdriverio.remote({
         desiredCapabilities: {
             browserName: 'chrome',
-            version: '27',
-            platform: 'Linux',
             tags: ['Homepage'],
             name: 'Acceptance Tests'
         },
