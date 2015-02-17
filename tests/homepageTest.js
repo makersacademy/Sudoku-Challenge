@@ -21,14 +21,14 @@ describe('Visiting the homepage', function() {
         port: 80,
         user: username,
         key: access_key,
-        logLevel: 'silent',
+        updateSauceJob: true,
+        logLevel: 'silent'
     });
     client.init(done);
   });
 
   after(function(done) {
     client
-      .sauceJobStatus(true)
       .end(done);
   });
 
