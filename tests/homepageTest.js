@@ -9,27 +9,27 @@ describe('Visiting the homepage', function() {
 
   before(function(done) {
     client = webdriverio.remote({
-        desiredCapabilities: {
-            browserName: 'chrome',
-            version: '27',
-            platform: 'XP',
-            tags: ['Sudoku'],
-            name: 'This is a test on sauce labs',
-            'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER
-        },
         host: 'ondemand.saucelabs.com',
         port: 80,
         user: username,
         key: access_key,
         updateSauceJob: true,
-        logLevel: 'silent',
+        logLevel: 'verbose',
+        desiredCapabilities: {
+          browserName: 'chrome',
+          version: '27',
+          platform: 'XP',
+          tags: ['Sudoku'],
+          name: 'This is a test on sauce labs',
+          'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER
+        }
     });
     client.init(done);
   });
 
-  after(function() {
+  after(function(done) {
     client
-      .end(true);
+      .end(done);
   });
 
   beforeEach(function(done) {
