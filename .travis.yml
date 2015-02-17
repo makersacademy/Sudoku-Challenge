@@ -11,5 +11,5 @@ before_script:
   - sleep 2
   - "java -jar selenium-server-standalone-2.43.1.jar &"
   - sleep 1
-  - "nodemon &"
+  - "npm start &"
   - sleep 3
