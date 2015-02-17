@@ -1,11 +1,13 @@
 var expect = require('chai').expect;
 var webdriverio = require('webdriverio');
+var SauceLabs = require('saucelabs');
 
 describe('Visiting the homepage', function() {
 
   var client = {};
   var username = process.env.SAUCE_USERNAME;
   var access_key = process.env.SAUCE_ACCESS_KEY;
+
 
   before(function(done) {
     client = webdriverio.remote({
@@ -23,30 +25,25 @@ describe('Visiting the homepage', function() {
           'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER
         }
     });
+    client.addCommand('sauceJobStatus', function(status, done) {
+        var sessionID = client.requestHandler.sessionID;
+        var sauceAccount = new SauceLabs({
+            username: process.env.SAUCE_USERNAME,
+            password: process.env.SAUCE_ACCESS_KEY
+        });
+
+        sauceAccount.updateJob(sessionID, status, done);
+    });
     client.init(done);
   });
 
   after(function(done) {
-    var options = {
-      headers: { 'Content-Type': 'text/json' },
-      url: 'http://' + process.env.SAUCE_USERNAME + ':' + process.env.SAUCE_ACCESS_KEY + '@saucelabs.com/rest/v1/' + process.env.SAUCE_USERNAME + '/jobs/' + client.requestHandler.sessionID,
-      method: 'PUT',
-      body: JSON.stringify({
-          passed: true,
-          public: true
+    client
+      .sauceJobStatus({
+        passed: failures === 0,
+        public: true
       })
-    };
-
-    request(options, function(err) {            
-      if(err) {
-        client.end(function() {
-          done(err);
-        });
-        return false;
-      }
-      client.end(done);
-    });
-    client.end(done);
+      .end(done);
   });
 
   beforeEach(function(done) {
