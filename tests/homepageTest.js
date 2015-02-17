@@ -15,13 +15,7 @@ describe('Visiting the homepage', function() {
             platform: 'XP',
             tags: ['Sudoku'],
             name: 'This is a test on sauce labs'
-        },
-        host: 'ondemand.saucelabs.com',
-        port: 80,
-        user: username,
-        key: access_key,
-        logLevel: 'silent',
-        'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER
+        }
     });
     client.init(done);
   });
