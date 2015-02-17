@@ -11,8 +11,8 @@ app.use(express.static(__dirname + '/public'));
 var grid;
 
 app.get('/', function (req, res) {
-   grid = new Grid(Cell)
-   grid.init();
+  grid = new Grid(Cell)
+  grid.init();
   res.sendFile(__dirname + '/views/index.html');
 });
 
@@ -29,7 +29,7 @@ app.post('/', function (req, res) {
 });
 
 server.listen(3000, function(){
-    console.log('Server listening on port 3000');
+  console.log('Server listening on port 3000');
 });
 
 module.exports = server;

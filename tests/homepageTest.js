@@ -4,24 +4,16 @@ var webdriverio = require('webdriverio');
 describe('Visiting the homepage', function() {
 
   var client = {};
-  var username = process.env.SAUCE_USERNAME;
-  var access_key = process.env.SAUCE_ACCESS_KEY;
 
   before(function(done) {
     client = webdriverio.remote({
         desiredCapabilities: {
             browserName: 'chrome',
             version: '27',
-            platform: 'XP',
-            tags: ['examples'],
-            name: 'This is an example test'
+            platform: 'Linux',
+            tags: ['Homepage'],
+            name: 'Acceptance Tests'
         },
-        host: 'http://' + username + ':' + access_key + '@ondemand.saucelabs.com/wd/hub',
-        port: 80,
-        user: username,
-        key: access_key,
-        logLevel: 'silent',
-        'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER
     });
     client.init(done);
   });
