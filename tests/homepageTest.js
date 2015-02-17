@@ -27,7 +27,9 @@ describe('Visiting the homepage', function() {
   });
 
   after(function(done) {
-    client.end(done);
+    client
+      .sauceJobStatus(true)
+      .end(done);
   });
 
   beforeEach(function(done) {
