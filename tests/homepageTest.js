@@ -13,7 +13,6 @@ describe('Visiting the homepage', function() {
         port: 80,
         user: username,
         key: access_key,
-        updateSauceJob: true,
         logLevel: 'verbose',
         desiredCapabilities: {
           browserName: 'chrome',
@@ -28,8 +27,26 @@ describe('Visiting the homepage', function() {
   });
 
   after(function(done) {
-    client
-      .end(done);
+    var options = {
+      headers: { 'Content-Type': 'text/json' },
+      url: 'http://' + process.env.SAUCE_USERNAME + ':' + process.env.SAUCE_ACCESS_KEY + '@saucelabs.com/rest/v1/' + process.env.SAUCE_USERNAME + '/jobs/' + client.requestHandler.sessionID,
+      method: 'PUT',
+      body: JSON.stringify({
+          passed: true,
+          public: true
+      })
+    };
+
+    request(options, function(err) {            
+      if(err) {
+        client.end(function() {
+          done(err);
+        });
+        return false;
+      }
+      client.end(done);
+    });
+    client.end(done);
   });
 
   beforeEach(function(done) {
