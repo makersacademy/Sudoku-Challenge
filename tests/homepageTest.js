@@ -9,43 +9,58 @@ describe('Visiting the homepage', function() {
   var username = process.env.SAUCE_USERNAME;
   var access_key = process.env.SAUCE_ACCESS_KEY;
 
+  if (process.env.TRAVIS) {
+    before(function(done) {
+      client = webdriverio.remote({
+          host: 'ondemand.saucelabs.com',
+          port: 80,
+          user: username,
+          key: access_key,
+          logLevel: 'silent',
+          desiredCapabilities: {
+            browserName: 'chrome',
+            version: '27',
+            platform: 'XP',
+            tags: ['Sudoku'],
+            name: 'This is a test on sauce labs',
+            'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER
+          }
+      });
+      client.addCommand('sauceJobStatus', function(status, done) {
+          var sessionID = client.requestHandler.sessionID;
+          var sauceAccount = new SauceLabs({
+              username: process.env.SAUCE_USERNAME,
+              password: process.env.SAUCE_ACCESS_KEY
+          });
 
-  before(function(done) {
-    client = webdriverio.remote({
-        host: 'ondemand.saucelabs.com',
-        port: 80,
-        user: username,
-        key: access_key,
-        logLevel: 'silent',
-        desiredCapabilities: {
-          browserName: 'chrome',
-          version: '27',
-          platform: 'XP',
-          tags: ['Sudoku'],
-          name: 'This is a test on sauce labs',
-          'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER
-        }
+          sauceAccount.updateJob(sessionID, status, done);
+      });
+      client.init(done);
     });
-    client.addCommand('sauceJobStatus', function(status, done) {
-        var sessionID = client.requestHandler.sessionID;
-        var sauceAccount = new SauceLabs({
-            username: process.env.SAUCE_USERNAME,
-            password: process.env.SAUCE_ACCESS_KEY
-        });
 
-        sauceAccount.updateJob(sessionID, status, done);
+    after(function(done) {
+      client
+        .sauceJobStatus({
+          passed: allPassed,
+          public: true
+        })
+        .end(done);
     });
-    client.init(done);
-  });
 
-  after(function(done) {
-    client
-      .sauceJobStatus({
-        passed: allPassed,
-        public: true
-      })
-      .end(done);
-  });
+  } else {
+
+    before(function(done) {
+      client = webdriverio.remote({ desiredCapabilities: { browserName: 'chrome' }});
+      client.init(done);
+    });
+
+    after(function(done) {
+      client.end(done);
+    });
+
+  }
+
+
 
   afterEach(function(done) {
     allPassed = allPassed && (this.currentTest.state === "passed");
