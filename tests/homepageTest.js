@@ -41,7 +41,7 @@ describe('Visiting the homepage', function() {
   after(function(done) {
     client
       .sauceJobStatus({
-        passed: allPassed;
+        passed: allPassed,
         public: true
       })
       .end(done);
