@@ -9,8 +9,9 @@ describe('Visiting the homepage', function() {
   if (process.env.TRAVIS) {
 
     before(function(done) {
-      client = new Setup().travis();  
-      client.addTravisSauceCommand();
+      setup = new Setup();  
+      client = setup.travis()
+      setup.addTravisSauceCommand(client);
       client.init(done);
     });
 

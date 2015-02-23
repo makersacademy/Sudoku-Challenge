@@ -23,15 +23,15 @@ Setup.prototype.travis = function() {
   });
 };
 
-Setup.prototype.addTravisSauceCommand = function() {
-  return addCommand('sauceJobStatus', function(status, done) {
+Setup.prototype.addTravisSauceCommand = function(client) {
+  client.addCommand('sauceJobStatus', function(status, done) {
     var sessionID = client.requestHandler.sessionID;
     var sauceAccount = new SauceLabs({
         username: process.env.SAUCE_USERNAME,
         password: process.env.SAUCE_ACCESS_KEY
     });
     sauceAccount.updateJob(sessionID, status, done);
-  })();
+  });
 };
 
 Setup.prototype.local = function() {
