@@ -5,6 +5,7 @@ var SauceLabs = require('saucelabs');
 describe('Visiting the homepage', function() {
 
   var client = {};
+  var allPassed = true;
   var username = process.env.SAUCE_USERNAME;
   var access_key = process.env.SAUCE_ACCESS_KEY;
 
@@ -15,7 +16,7 @@ describe('Visiting the homepage', function() {
         port: 80,
         user: username,
         key: access_key,
-        logLevel: 'verbose',
+        logLevel: 'silent',
         desiredCapabilities: {
           browserName: 'chrome',
           version: '27',
@@ -40,10 +41,15 @@ describe('Visiting the homepage', function() {
   after(function(done) {
     client
       .sauceJobStatus({
-        passed: true,
+        passed: allPassed;
         public: true
       })
       .end(done);
+  });
+
+  afterEach(function(done) {
+    allPassed = allPassed && (this.currentTest.state === "passed");
+    done();
   });
 
   beforeEach(function(done) {
