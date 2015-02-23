@@ -5,8 +5,6 @@ describe('Visiting the homepage', function() {
 
   var client = {};
   var allPassed = true;
-  var username = process.env.SAUCE_USERNAME;
-  var access_key = process.env.SAUCE_ACCESS_KEY;
 
   if (process.env.TRAVIS) {
 

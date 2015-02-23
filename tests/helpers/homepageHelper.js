@@ -1,5 +1,7 @@
 var webdriverio = require('webdriverio');
 var SauceLabs = require('saucelabs');
+var username = process.env.SAUCE_USERNAME;
+var access_key = process.env.SAUCE_ACCESS_KEY;
 
 var Setup = function() {};
 
