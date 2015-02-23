@@ -1,6 +1,5 @@
 var expect = require('chai').expect;
-var webdriverio = require('webdriverio');
-var SauceLabs = require('saucelabs');
+var Setup = require('./helpers/homepageHelper');
 
 describe('Visiting the homepage', function() {
 
@@ -10,31 +9,10 @@ describe('Visiting the homepage', function() {
   var access_key = process.env.SAUCE_ACCESS_KEY;
 
   if (process.env.TRAVIS) {
-    before(function(done) {
-      client = webdriverio.remote({
-          host: 'ondemand.saucelabs.com',
-          port: 80,
-          user: username,
-          key: access_key,
-          logLevel: 'silent',
-          desiredCapabilities: {
-            browserName: 'chrome',
-            version: '27',
-            platform: 'XP',
-            tags: ['Sudoku'],
-            name: 'This is a test on sauce labs',
-            'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER
-          }
-      });
-      client.addCommand('sauceJobStatus', function(status, done) {
-          var sessionID = client.requestHandler.sessionID;
-          var sauceAccount = new SauceLabs({
-              username: process.env.SAUCE_USERNAME,
-              password: process.env.SAUCE_ACCESS_KEY
-          });
 
-          sauceAccount.updateJob(sessionID, status, done);
-      });
+    before(function(done) {
+      client = new Setup().travis();  
+      client.addTravisSauceCommand();
       client.init(done);
     });
 
@@ -50,7 +28,7 @@ describe('Visiting the homepage', function() {
   } else {
 
     before(function(done) {
-      client = webdriverio.remote({ desiredCapabilities: { browserName: 'chrome' }});
+      client = new Setup().local();
       client.init(done);
     });
 
@@ -60,17 +38,15 @@ describe('Visiting the homepage', function() {
 
   }
 
-
-
-  afterEach(function(done) {
-    allPassed = allPassed && (this.currentTest.state === "passed");
-    done();
-  });
-
   beforeEach(function(done) {
     client
       .url('http://localhost:3000')
       .call(done);
+  });
+
+  afterEach(function(done) {
+    allPassed = allPassed && (this.currentTest.state === "passed");
+    done();
   });
 
   it('has a title', function(done) {
