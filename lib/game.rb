@@ -3,12 +3,10 @@
 end
 
 class Game
+  attr_reader :board
+
   def initialize(size=1)
     @board = Board.new(size).populate
-  end
-
-  def board
-    @board
   end
 
   def show_board
