@@ -56,13 +56,13 @@ describe Region do
 
     it 'knows if a number is not duplicated for 4 element region' do
       [square, square1, square2, square3].each { |square| region.add(square) }
-      expect(square).to receive(:number).and_return(4)
+      expect(square).to receive(:number).at_least(:once).and_return(4)
       expect(region.number_duplicated?).to be false
     end
 
     it 'knows if a number is duplicated for 4 element region' do
       [square, square1, square2, square3].each { |square| region.add(square) }
-      expect(square).to receive(:number).and_return(3)
+      expect(square).to receive(:number).at_least(:once).and_return(3)
       expect(region.number_duplicated?).to be true
     end
 

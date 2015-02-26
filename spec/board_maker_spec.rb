@@ -4,7 +4,7 @@ require 'board_maker'
 describe BoardMaker do
   let(:maker) { BoardMaker.new }
 
-  context 'squares' do
+  describe 'making squares' do
     it 'makes a square for a size 1 board' do
       board = Board.new
       expect(board.squares.count).to eq(0)
@@ -13,7 +13,7 @@ describe BoardMaker do
     end
   end
 
-  context 'regions' do
+  describe 'making regions' do
     let(:board) { double :board, :size => 1, :squares => [:square] }
     let(:medium_board) { double :board, :size => 2, 
                                         :squares => Array.new(16, :square) }

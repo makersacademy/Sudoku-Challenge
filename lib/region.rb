@@ -1,4 +1,6 @@
 class Region
+  attr_reader :squares
+  attr_writer :type
 
   def initialize
     @squares = []
@@ -8,16 +10,8 @@ class Region
     @type ||= :box
   end
 
-  def type=(type)
-    @type = type
-  end
-
   def add(square)
     @squares << square
-  end
-
-  def squares
-    @squares
   end
 
   def contains?(square)
@@ -31,14 +25,17 @@ class Region
 
   #TODO may be inefficient for large regions
   def number_duplicated?
-    numbers = @squares.map{|square| square.number}
     numbers.detect {|number| numbers.count(number) > 1} ? true : false
   end
 
   def possible_plays
-    numbers_played = @squares.map {|square| square.number}
     all_numbers = (1..@squares.count).to_a
-    all_numbers.reject {|i| numbers_played.include?(i)}
+    all_numbers.reject {|i| numbers.include?(i)}
   end
+  
+  private
 
+  def numbers
+    @squares.map{|square| square.number}
+  end
 end

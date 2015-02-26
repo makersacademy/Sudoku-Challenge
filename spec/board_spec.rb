@@ -4,10 +4,9 @@ require 'board'
 describe Board do
   # let(:board)  { Board.new }
   let(:region) { double :region }
-  let(:board) { Board.new}
+  let(:board) { Board.new }
   let(:small_board) { Board.new.populate }
   let(:med_board) { Board.new(2).populate }
-
 
   it 'can contain a region' do
     board.add_region(region)
@@ -16,12 +15,12 @@ describe Board do
 
   context 'size' do
     it 'has one box when size 1' do
-      boxes = small_board.regions.select{ |region| region.type == :box }
+      boxes = small_board.regions.select { |region| region.type == :box }
       expect(boxes.count).to eq(1)
     end
 
     it 'has four boxes when size 2' do
-      boxes = med_board.regions.select{ |region| region.type == :box }
+      boxes = med_board.regions.select { |region| region.type == :box }
       expect(boxes.count).to eq(4)
     end
 
@@ -51,7 +50,7 @@ describe Board do
     it 'cant play a square twice' do
       square = small_board.squares.first
       small_board.play(square, 1)
-      expect { small_board.play(square, 1)} .to raise_error(RuntimeError)
+      expect { small_board.play(square, 1) } .to raise_error(RuntimeError)
     end
 
     it 'knows what order two squares were played in' do
@@ -60,7 +59,7 @@ describe Board do
       square2 = board.squares.last
       board.play(square2, 1)
       board.play(square1, 2)
-      expect(board.play_order(square2)<board.play_order(square1)).to be true
+      expect(board.play_order(square2) < board.play_order(square1)).to be true
     end
 
     it 'can remove play for a square' do
@@ -69,14 +68,12 @@ describe Board do
       small_board.remove_play(square)
       expect(small_board.unplayed_squares.count).to eq(1)
     end
-
   end
 
   context 'legal moves' do
     it 'knows which moves are available for a square' do
       square = med_board.squares.first
-      expect(med_board.available_moves(square)).to eq([1,2,3,4])
+      expect(med_board.available_moves(square)).to eq([1, 2, 3, 4])
     end
   end
-
 end
