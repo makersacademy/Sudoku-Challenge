@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <a href='/'>New Game</a>
+    <form>
+      <form action="/play" method="get">
+      Number of moves:<br>
+      <input type="text" name="number_moves" value="1">
+      <input type="submit" value="Advance">
+      </form>
+
+    <ul>
+      <% @board_view.each do |row| %>
+        <li> 
+          <% row.each do |square_value| %>
+            <td> <%= square_value %> </td>
+          <%end%>
+        </li>
+      <%end%>
+    </ul>
+
+    <%= 'Game Over' if @finished %>
+  </body>
+</html>
