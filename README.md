@@ -22,9 +22,12 @@ see below
 
 ### Solution
 
-* Squares belong to generic Region objects which can be rows, columns or boxes. 
-* Board Maker object sets these up. The Board contains regions, and can check for legal moves. 
-* Game chooses a legal move in a square to play.
+* Squares can hold a number, check for legal plays. 
+* Regions hold squares, check for legal combinations of squares
+* Board holds squares and regions. Checks square play legal for all regions on board.
+* Board maker populates board with squares and regions. Size can be set.
+* Board viewer shows the board
+* Game holds a board, can choose a play from legal moves.
 
 The game currently chooses a legal play in a random square
 
@@ -32,9 +35,9 @@ The game currently chooses a legal play in a random square
 ```
 rackup
 ```
-localhost:9292
-select board size 2, click 'New Game'
-click 'Advance' button to make moves
+* localhost:9292
+* select board size 2, click 'New Game'
+* click 'Advance' button to make moves
 
 ### Tests
 
