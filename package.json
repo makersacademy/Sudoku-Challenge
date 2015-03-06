@@ -1,0 +1,36 @@
+{
+  "name": "Sudoku-Challenge",
+  "version": "1.0.0",
+  "description": "A Sudoku Solver",
+  "main": "server.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nickbdyer/Sudoku-Challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nickbdyer/Sudoku-Challenge/issues"
+  },
+  "homepage": "https://github.com/nickbdyer/Sudoku-Challenge",
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.11.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-express-server": "^0.4.19",
+    "grunt-mocha-cli": "^1.12.0",
+    "grunt-run": "^0.3.0",
+    "jshint": "^2.6.0",
+    "mocha": "^2.1.0",
+    "saucelabs": "^0.1.1",
+    "webdriverio": "^2.4.5"
+  },
+  "dependencies": {
+    "ejs": "^2.3.1",
+    "express": "^4.11.2"
+  }
+}

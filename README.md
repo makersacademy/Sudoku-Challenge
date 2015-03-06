@@ -1,23 +1,56 @@
 # Sudoku Challenge
 
+[![Code
+Climate](https://codeclimate.com/github/nickbdyer/Sudoku-Challenge/badges/gpa.svg)](https://codeclimate.com/github/nickbdyer/Sudoku-Challenge) 
+[![Test Coverage](https://codeclimate.com/github/nickbdyer/Sudoku-Challenge/badges/coverage.svg)](https://codeclimate.com/github/nickbdyer/Sudoku-Challenge) [![Build Status](https://travis-ci.org/nickbdyer/Sudoku-Challenge.svg)](https://travis-ci.org/nickbdyer/Sudoku-Challenge)
+
+### The Brief
+
 Build a Sudoku checker that can automatically generate and solve any 9 x 9 [Sudoku](http://en.wikipedia.org/wiki/Sudoku) grid such as the one below:
 
-## Unsolved
+##### Unsolved
 
 ![unsolved](/public/img/sudoku_unsolved.png)
 
-## Solved
+##### Solved
 
 ![solved](/public/img/sudoku_solved.png)
 
 > Images courtesy of Wikipedia where you can find more [information](http://en.wikipedia.org/wiki/Sudoku).
 
-You can use any technology you like, and it is down to you whether you use a command-line interface or a web interface for the process of generating and solving the puzzle.
 
-**Don't forget** - the aim of the challenge is to show-off your skills writing clean, test-driven, well designed object-oriented code, rather than just to prove you can solve the problem. [This document](https://github.com/makersacademy/post_course/blob/master/Taking%20Your%20Coding%20Further.md) explains more, please re-read it before starting the challenge.
+### Method
 
-## Submitting your challenge
+Throughout the course, when dealing with Javascript projects, the decision on
+testing frameworks has often been difficult. Since I wanted to do this project
+BDD throughout, I wanted to settle in with a testing suite. I opted for
+CucumberJS and Mocha with Chai for Acceptance Testing and Unit Testing
+respectively. I chose Mocha with Chai over Jasmine, since I have found Mocha
+plays better with Istanbul for Test Coverage.
 
-To start the challenge, fork this repository. Once you have finished, make sure you have added [Code Climate](https://codeclimate.com/) stats to your repository then submit a pull request. See if you can resolve as many [style-guide](https://github.com/thoughtbot/guides) violations picked up by [Hound](https://houndci.com) as possible and your Code Climate score is above 3 and then one of the coaches will review your code. Good luck!
+##### Domain Model
 
-> If you have done your project in Node, please add a Travis config file which will allow us to automatically run your tests and see if they pass. You can [read the documentation](http://docs.travis-ci.com/user/languages/javascript-with-nodejs/) or [this article](http://www.position-absolute.com/articles/gluing-together-jasmine-grunt-travis-ci-github-testing-front-end-code-has-never-been-easier/) for more help.
+The Sudoku Solver should allow people to enter numbers into cells arranged in
+a 9 x 9 grid. Cells should only have one of the numbers 1-9. Rows should only have
+the numbers 1-9. Columns should only have the numbers 1-9. Each 3 x 3 mini grid 
+should only have the numbers 1-9.
+
+##### Algorithms
+
+During my research around the Sudoku problem, I came across many solutions to
+the problem. Backtracing, Brute Force, Stochastic Search, Constraint
+Programming and Exact Cover. I am not familiar with algorithmic solutions to
+problems, but my research led me to believe that considering the challenge as
+an instance of the Exact Cover problem, would allow me to use Knuth's Dancing
+Links Algorithm. This algorithm considers the 9x9 Sudoku Grid as a constraint
+matrix with 729 solution sets and 324 constraint sets.
+
+I understand that this solution is extremely efficient, however, I struggled to
+see how I could implement this solution in a TDD way, since the solution itself
+was very complicated. 
+
+
+######Classes
+
+- Cell
+- Grid
